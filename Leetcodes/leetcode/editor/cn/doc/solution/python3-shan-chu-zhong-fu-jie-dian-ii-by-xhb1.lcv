@@ -1,0 +1,66 @@
+### 解题思路
+
+1. 参数定义
+
+- `dummy`：哑结点
+- `node`：新链表当前节点
+- `flag`：对于每个不同的节点初始化为`0`，标记当前节点是否存在重复
+
+2. 思路
+
+- 首先创建哑结点dummy，next指向第一个元素
+- 比如示例：[2,2,2,3,4,4]，当`head`指向第一个`2`时，判断后面是否存在多个`2`，存在，`flag`标记为`1`，并将`head`快进到最后一个`2`，下一步，`head`跳到下一个不同值的节点`3`，由于不存在重复的`3`，`flag`标记为`0`，所以将`3`加入到新链表中
+- 最后，所有节点遍历完毕后，需要将新链表的最后一个节点指向`None`
+- 返回值：`dummy.next`
+
+3. 复杂度分析
+
+- 时间复杂度：O($n$)
+- 空间复杂度：O($1$)
+
+### 代码
+
+* python3
+
+```python
+class Solution:
+    def deleteDuplicates(self, head: ListNode) -> ListNode:
+      # 创建哑结点
+      node=dummy=ListNode(0)
+      dummy.next=head
+      while head:
+        flag=0
+        # 如果当前节点存在相同节点，flag=1，并快进到与当前节点相同的最后一个节点
+        while head.next and head.val == head.next.val:
+          flag=1
+          head=head.next
+        # 如果不存在重复值，加入新链表中
+        if flag==0:
+          node.next=head
+          node=node.next
+        # 进入下一个不同的节点
+        head=head.next
+      # 将新链表的最后一个元素指向None
+      node.next=None
+      # 返回值
+      return dummy.next
+```
+
+#### [83. 删除排序链表中的重复元素](https://leetcode-cn.com/problems/remove-duplicates-from-sorted-list/)
+
+* python3
+
+```python
+class Solution:
+    def deleteDuplicates(self, head: ListNode) -> ListNode:
+      cur=head
+      while head:
+        # 如果存在重复元素，则将当前节点的下一个指针指向下下个节点，目的是让后面重复的节点消失
+        if head.next and head.val==head.next.val:
+          head.next=head.next.next
+        else:
+          head=head.next
+      return cur
+        
+```
+

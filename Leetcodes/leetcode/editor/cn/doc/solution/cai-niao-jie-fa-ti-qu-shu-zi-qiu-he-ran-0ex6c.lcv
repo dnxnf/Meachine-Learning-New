@@ -1,0 +1,44 @@
+### 解题思路
+
+菜鸟解法，将l1 l2的内容转换成数字，求和后，再存储为目标格式
+
+### 代码
+
+* python3
+
+```python
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def addTwoNumbers(self, l1: ListNode, l2: ListNode) -> ListNode:
+        # 通过循环读取l1每个数字，利用字符串将每个数字叠加成完整的数字
+        num1 = str(l1.val)
+        flag = l1.next
+        while flag != None:
+            num1 = str(flag.val) + num1
+            flag = flag.next
+        # 通过循环读取l2每个数字，利用字符串将每个数字叠加成完整的数字
+        num2 = str(l2.val)
+        flag = l2.next
+        while flag != None:
+            num2 = str(flag.val) + num2
+            flag = flag.next
+        # 转成int，进行求和，再转成字符串
+        numSum = str( int(num1) + int(num2) )    
+        # 利用循环，逐个读取字符串并存储起来
+        result = ListNode(val=int(numSum[0]))
+        for i in range(len(numSum)-1):
+            result = ListNode(val=int(numSum[i+1]), next=result)
+
+        return result
+
+
+
+
+
+
+```
+

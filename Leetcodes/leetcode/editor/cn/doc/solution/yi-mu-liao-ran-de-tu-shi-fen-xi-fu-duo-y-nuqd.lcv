@@ -1,0 +1,199 @@
+# 思路
+
+我们可以将其抽象为图结构，如下所示。顶点 3 表示法官，其余为百姓。信任关系用边表示，比如边 $1 \rightarrow 3$ 表示 1 信任 3。
+![1718423325-dVaLMt-Screenshot 2024-06-15 at 11.40.28 AM.png](https://pic.leetcode.cn/1719456955-QHOdEB-1718423325-dVaLMt-Screenshot%202024-06-15%20at%2011.40.28%20AM.png)
+
+顶点 1245 之间可能也存在边，我们先不用管。
+
+此处补充一下出度入度的概念：
+- 出度：从某点出发的边数
+- 入度：指向某点的边数
+
+<br> </br>
+
+根据题意，如果小镇法官存在，那么：
+1. 小镇法官不会信任任何人。
+2. 每个人（除了小镇法官）都信任这位小镇法官。
+3. 只有一个人同时满足属性 1 和属性 2。
+
+<br> </br>
+
+$n$ 为点数，所以在图结构中，如果存在小镇法官，只有他对应的顶点满足：
+1. 出度为 $0$
+2. 入度为 $n - 1$
+
+综上，我们遍历边集，对每条边的起点和终点统计出度入度就可以了。
+
+# 代码
+
+* []
+
+```C++
+class Solution {
+public:
+    int findJudge(int n, vector<vector<int>>& trust) {
+        // 出度数组，因为点数分布在 1~n, 所以此处多存储一个顶点 0，方便处理。对于下面的入度数组同理。  
+        vector<int> outDegrees(n + 1); 
+        // 入度数组
+        vector<int> inDegrees(n + 1);
+
+        // 遍历边集 trust
+        for (auto& edge : trust) {
+            int u = edge[0], v = edge[1]; // 起点和终点
+            outDegrees[u]++; // 起点出度 + 1
+            inDegrees[v]++; // 终点入度 + 1
+        }
+
+        // 忽略顶点 0，寻找出度为 0，入度为 n-1 的顶点。
+        for (int v = 1; v <= n; ++v) {
+            if (outDegrees[v] == 0 && inDegrees[v] == n - 1){
+                return v;
+            }
+        }
+
+        // 小镇法官不存在
+        return -1;
+    }
+};
+```
+
+* []
+
+```C
+int findJudge(int n, int** trust, int trustSize, int* trustColSize){
+    // 出度数组，因为点数分布在 1~n, 所以此处多存储一个顶点 0，方便处理。对于下面的入度数组同理。  
+    int* outDegrees = (int *)malloc(sizeof(int)*(n+1));
+    // 入度数组
+    int* inDegrees = (int *)malloc(sizeof(int)*(n+1));
+    memset(inDegrees, 0, sizeof(int)*(n+1));
+    memset(outDegrees, 0, sizeof(int)*(n+1));
+
+    // 遍历边集 trust
+    for (int i = 0; i < trustSize; ++i) {
+        int u = trust[i][0], v = trust[i][1]; // 起点和终点
+        outDegrees[u]++; // 起点出度 + 1
+        inDegrees[v]++; // 终点入度 + 1
+    }
+    
+    // 忽略顶点 0，寻找出度为 0，入度为 n-1 的顶点。
+    for (int v = 1; v <= n; ++v) {
+        if (outDegrees[v] == 0 && inDegrees[v] == n - 1) {
+            return v;
+        }
+    }
+
+    // 小镇法官不存在
+    return -1;
+}
+```
+
+* []
+
+```Python
+class Solution:
+    def findJudge(self, n: int, trust: List[List[int]]) -> int:
+        # 出度数组，因为点数分布在 1~n, 所以此处多存储一个顶点 0，方便处理。对于下面的入度数组同理。  
+        out_degrees = [0] * (n + 1)
+        # 入度数组 
+        in_degrees = [0] * (n + 1) 
+
+        # 遍历边集 trust
+        for u, v in trust:
+            out_degrees[u] += 1 # 起点 u 出度 + 1
+            in_degrees[v] += 1 # 终点 v 入度 + 1
+
+        # 忽略顶点 0，寻找出度为 0，入度为 n-1 的顶点。
+        for v in range(1, n + 1):
+            if out_degrees[v] == 0 and in_degrees[v] == n - 1:
+                return v
+
+        # 小镇法官不存在
+        return -1
+```
+
+* []
+
+```Python3+语法糖
+class Solution:
+    def findJudge(self, n: int, trust: List[List[int]]) -> int:
+        outDegrees = Counter(start for start, _ in trust)
+        inDegrees = Counter(end for _, end in trust)
+        return next((i for i in range(1, n + 1) if outDegrees[i] == 0 and inDegrees[i] == n - 1), -1)
+```
+
+* []
+
+```Java
+class Solution {
+    public int findJudge(int n, int[][] trust) {
+        // 出度数组，因为点数分布在 1~n, 所以此处多存储一个顶点 0，方便处理。对于下面的入度数组同理。  
+        int[] outDegrees = new int[n + 1];
+        // 入度数组
+        int[] inDegrees = new int[n + 1]; 
+        
+        // 遍历边集 trust
+        for (int[] edge : trust) {
+            int u = edge[0], v = edge[1]; // 起点和终点
+            outDegrees[u]++; // 起点出度 + 1
+            inDegrees[v]++; // 终点入度 + 1
+        }
+
+        // 忽略顶点 0，寻找出度为 0，入度为 n-1 的顶点。
+        for (int v = 1; v <= n; v++) {
+            if (outDegrees[v] == 0 && inDegrees[v] == n - 1) {
+                return v;
+            }
+        }
+        
+        // 小镇法官不存在
+        return -1;
+    }
+}
+```
+
+* []
+
+```kotlin
+class Solution {
+    fun findJudge(n: Int, trust: Array<IntArray>): Int {
+        // 出度数组，因为点数分布在 1~n, 所以此处多存储一个顶点 0，方便处理。对于下面的入度数组同理。
+        val outDegrees = IntArray(n+1) 
+        // 入度数组
+        val inDegrees = IntArray(n+1) 
+
+        // 遍历边集 trust
+        for((u, v) in trust){ 
+            outDegrees[u]++ // 起点 u 出度 + 1
+            inDegrees[v]++ // 终点 v 入度 + 1
+        }
+
+        // 忽略顶点 0，寻找出度为 0，入度为 n-1 的顶点。
+        return (1..n).firstOrNull{ 
+                outDegrees[it] == 0 && inDegrees[it] == n-1 
+            }
+            ?: -1
+    }
+}
+```
+
+# 复杂度
+
+读者不熟悉 $\Theta$ 视为 $O$ 即可。
+
+记 $n$ 为点数，$m$ 为边数。
+
+时间复杂度：$\Theta(n + m)$。此处不能化简，因为小镇法官可能不存在，我们不能确定 $m$ 与 $n$ 的大小关系。
+
+空间复杂度：$\Theta(n)$
+
+# 推广
+
+借助理论知识能较方便地处理很多模型，这和数学中的函数很像，也是理论科学的魅力所在。也希望读者能重视基础知识，不用急于做题。很多题目中所要求解的就是学术中的术语，比如“岛屿数量”这道经典题目求的就是连通分量数目。
+
+以下皆为个人所著，兼顾了职场面试和本硕阶段的学术考试。
+- [不同层次的面试算法学习规划](https://leetcode.cn/circle/discuss/xV68NV/)
+- [附个人题解的双指针题单](https://leetcode.cn/circle/discuss/BI95fj/)
+- [图论入门](https://leetcode.cn/leetbook/detail/introduction-to-graph/)
+- [图论进阶](https://leetcode.cn/leetbook/detail/advanced-graph-theory/)
+
+点赞关注不迷路，祝各位早日上岸，飞黄腾达！

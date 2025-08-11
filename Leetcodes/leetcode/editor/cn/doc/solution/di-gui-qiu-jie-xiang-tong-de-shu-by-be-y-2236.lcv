@@ -1,0 +1,51 @@
+### 解题思路
+
+- 递归求解
+- `p`和`q`均不存在，返回`True`
+- `p`和`q`仅存在一个，返回`False`
+
+* python3
+
+```python
+if not p and not q: return True
+elif not p or not q: return False
+```
+
+- `p`和`q`值不相等，返回`False`
+- 之前没有返回的话，直接返回递归左右节点的比较
+
+* python3
+
+```python
+if p.val != q.val: return False
+return self.isSameTree(p.left, q.left) and self.isSameTree(p.right, q.right)
+```
+
+### 代码
+
+* python3
+
+```python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def isSameTree(self, p: TreeNode, q: TreeNode) -> bool:
+        if not p and not q: 
+            return True
+        elif not p or not q: 
+            return False
+        if p.val != q.val: 
+            return False
+        return self.isSameTree(p.left, q.left) and self.isSameTree(p.right, q.right)
+```
+
+### 复杂度分析
+
+- 时间复杂度：$O(min(m,n))$, 其中 $m$ 和 $n$ 分别是两个二叉树的节点数。对两个二叉树同时进行深度优先搜索，只有当两个二叉树中的对应节点都不为空时才会访问到该节点，因此被访问到的节点数不会超过较小的二叉树的节点数。
+- 空间复杂度：$O(min(m,n))$, 其中 $m$ 和 $n$ 分别是两个二叉树的节点数。空间复杂度取决于递归调用的层数，递归调用的层数不会超过较小的二叉树的最大高度，最坏情况下，二叉树的高度等于节点数。
+
+[参考官方题解](https://leetcode-cn.com/problems/same-tree/solution/xiang-tong-de-shu-by-leetcode-solution/)

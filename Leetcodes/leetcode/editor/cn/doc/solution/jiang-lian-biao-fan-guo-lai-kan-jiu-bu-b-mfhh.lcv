@@ -1,0 +1,190 @@
+> 这道题一是初看别扭，二是细节不少，读者受挫不必灰心。
+
+# 思路
+
+<![链表相加.001.jpeg](https://pic.leetcode.cn/1719750682-rCVSpA-%E9%93%BE%E8%A1%A8%E7%9B%B8%E5%8A%A0.001.jpeg),
+![链表相加.002.jpeg](https://pic.leetcode.cn/1719750687-SbNNPR-%E9%93%BE%E8%A1%A8%E7%9B%B8%E5%8A%A0.002.jpeg),
+![链表相加.003.jpeg](https://pic.leetcode.cn/1719750692-ZVzFrg-%E9%93%BE%E8%A1%A8%E7%9B%B8%E5%8A%A0.003.jpeg),
+![链表相加.004.jpeg](https://pic.leetcode.cn/1719750697-vbwLYH-%E9%93%BE%E8%A1%A8%E7%9B%B8%E5%8A%A0.004.jpeg),
+![链表相加.005.jpeg](https://pic.leetcode.cn/1719750701-ztxOVQ-%E9%93%BE%E8%A1%A8%E7%9B%B8%E5%8A%A0.005.jpeg),
+![链表相加.006.jpeg](https://pic.leetcode.cn/1719750705-tzECbj-%E9%93%BE%E8%A1%A8%E7%9B%B8%E5%8A%A0.006.jpeg)>
+
+# 代码
+
+* []
+
+```C
+struct ListNode* createListNode(int val) {
+    struct ListNode* node = (struct ListNode*)malloc(sizeof(struct ListNode));
+    node->val = val;
+    node->next = NULL;
+    return node;
+}
+
+struct ListNode* addTwoNumbers(struct ListNode* l1, struct ListNode* l2) {
+    // 构造哑巴节点 dummy，最后返回 dummy.next, 以方便处理新链表的头节点。
+    struct ListNode* dummy = createListNode(0);
+    struct ListNode* node = dummy; // node 一直会变化（前进）
+    int carrier = 0; // 进位
+
+    // 只要有没走到头的链表或者进位不为 0 就一直前进。
+    while (l1 != NULL || l2 != NULL || carrier != 0) {
+        // 求和，考虑可能有链表走到头
+        int sum = (l1 != NULL ? l1->val : 0) + (l2 != NULL ? l2->val : 0) + carrier;
+
+        // 在尾部添加节点
+        node->next = createListNode(sum % 10);
+        node = node->next;
+        
+        // 更新进位，并向两个链表尾部前进
+        carrier = sum / 10;
+        if (l1 != NULL) l1 = l1->next;
+        if (l2 != NULL) l2 = l2->next;
+    }
+
+    struct ListNode* result = dummy->next; // 保存结果链表的头节点
+    free(dummy); // 释放哑节点的内存
+    return result;
+}
+```
+
+* []
+
+```C++
+class Solution {
+public:
+    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
+        // 构造哑巴节点 dummy，最后返回 dummy.next, 以方便处理新链表的头节点。
+        ListNode* dummy = new ListNode(0);
+        ListNode* node = dummy; // node 一直会变化（前进）
+        int carrier = 0; // 进位
+        
+        // 只要有没走到头的链表或者进位不为 0 就一直前进。
+        while (l1 || l2 || carrier) {
+            // 求和，考虑可能有链表走到头
+            int sum = (l1 ? l1->val : 0) + (l2 ? l2->val : 0) + carrier;
+
+            // 在尾部添加节点
+            node->next = new ListNode(sum % 10);
+            node = node->next;
+            
+            // 更新进位，并向两个链表尾部前进
+            carrier = sum / 10;
+            if (l1) l1 = l1->next;
+            if (l2) l2 = l2->next;
+        }
+
+        ListNode* result = dummy->next; // 保存结果链表的头节点
+        delete dummy; // 释放哑节点的内存
+        return result;
+    }
+};
+```
+
+* []
+
+```Python
+class Solution:
+    def addTwoNumbers(self, l1: ListNode, l2: ListNode) -> ListNode:
+        # 构造哑巴节点 dummy，最后返回 dummy.next, 以方便处理新链表的头节点。
+        dummy = ListNode(0)
+        node = dummy  # node 一直会变化（前进）
+        carrier = 0  # 进位
+
+        # 只要有没走到头的链表或者进位不为 0 就一直前进。
+        while l1 or l2 or carrier:
+            # 求和，考虑可能有链表走到头
+            sum = (l1.val if l1 else 0) + (l2.val if l2 else 0) + carrier
+
+            # 在尾部添加节点
+            node.next = ListNode(sum % 10)
+            node = node.next
+            
+            # 更新进位，并向两个链表尾部前进
+            carrier = sum // 10
+            if l1: l1 = l1.next
+            if l2: l2 = l2.next
+
+        return dummy.next
+```
+
+* []
+
+```Java
+class Solution {
+    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+        // 构造哑巴节点 dummy，最后返回 dummy.next, 以方便处理新链表的头节点。
+        ListNode dummy = new ListNode(0);
+        ListNode node = dummy; // node 一直会变化（前进）
+        int carrier = 0; // 进位
+        
+        // 只要有没走到头的链表或者进位不为 0 就一直前进。
+        while (l1 != null || l2 != null || carrier != 0) {
+            // 求和，考虑可能有链表走到头
+            int sum = (l1 != null ? l1.val : 0) + (l2 != null ? l2.val : 0) + carrier;
+
+            // 在尾部添加节点
+            node.next = new ListNode(sum % 10);
+            node = node.next;
+            
+            // 更新进位，并向两个链表尾部前进
+            carrier = sum / 10;
+            if (l1 != null) l1 = l1.next;
+            if (l2 != null) l2 = l2.next;
+        }
+
+        return dummy.next;
+    }
+}
+```
+
+* []
+
+```Kotlin
+class Solution {
+    fun addTwoNumbers(l1: ListNode?, l2: ListNode?): ListNode? {
+        // 构造哑巴节点 dummy，最后返回 dummy.next, 以方便处理新链表的头节点。
+        val dummy = ListNode(0)
+        var node = dummy // node 一直会变化（前进）
+        var l1 = l1
+        var l2 = l2
+        var carrier = 0 // 进位
+
+        // 只要有没走到头的链表或者进位不为 0 就一直前进。
+        while(l1 != null || l2 != null || carrier != 0){
+            // 求和，考虑可能有链表走到头
+            val sum = (l1?.`val` ?: 0) + (l2?.`val` ?: 0) + carrier
+
+            // 在尾部添加节点
+            node.next = ListNode(sum % 10)
+            node = node.next!!
+            
+            // 更新进位，并向两个链表尾部前进
+            carrier = sum / 10 
+            l1 = l1?.next
+            l2 = l2?.next
+        }
+
+        return dummy.next
+    }
+}
+```
+
+# 复杂度
+
+设链表 1 的长度为 $m$，链表 2 的长度为 $n$。
+
+时间：$\Theta(m+n)$，等同于 $\Theta(max(m,n))$
+空间：$\Theta(1)$，忽略返回值。
+
+读者不熟悉 $\Theta$ 视为 $O$ 即可。
+
+# 推广
+
+以下皆为个人所著，兼顾了职场面试和本硕阶段的学术考试。
+- [不同层次的面试算法学习规划](https://leetcode.cn/circle/discuss/xV68NV/)
+- [附个人题解的双指针题单](https://leetcode.cn/circle/discuss/BI95fj/)
+- [图论入门](https://leetcode.cn/leetbook/detail/introduction-to-graph/)
+- [图论进阶](https://leetcode.cn/leetbook/detail/advanced-graph-theory/)
+
+点赞关注不迷路，祝各位早日上岸，飞黄腾达！

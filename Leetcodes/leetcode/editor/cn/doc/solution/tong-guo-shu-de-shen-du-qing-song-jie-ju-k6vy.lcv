@@ -1,0 +1,511 @@
+记 root 点数为 $m$，subRoot 点数为 $n$。读者如果不熟悉 $\Theta$ 视为 $O$ 即可。
+
+# 解法一：枚举并判断相等
+
+## 思路
+
+我们可以枚举 root 的节点并判断其和 subRoot 是否相等。如果读者不知晓如何比较子树相等，读者可先做这道[相同的树](https://leetcode.cn/problems/same-tree/description/)。
+
+这里采用更简单的 DFS 枚举方式。
+
+## 代码
+
+* []
+
+```C++
+class Solution {
+private:
+    // 判断 a b 两棵树是否相等
+    bool equals(TreeNode* a, TreeNode* b) {
+        if (a == nullptr && b == nullptr) return true;
+        if (a == nullptr || b == nullptr) return false;
+        return a->val == b->val && equals(a->left, b->left) && equals(a->right, b->right);
+    }
+
+public:
+    // dfs 枚举
+    bool isSubtree(TreeNode* root, TreeNode* subRoot) {
+        if(equals(root, subRoot)) return true;
+        if(root == nullptr) return false;
+        return isSubtree(root->left, subRoot) || isSubtree(root->right, subRoot);
+    }
+};
+```
+
+* []
+
+```Python
+class Solution:
+    # 判断 a b 两棵树是否相等
+    def equals(self, a: TreeNode, b: TreeNode) -> bool:
+        if not a and not b:
+            return True
+        if not a or not b:
+            return False
+        return a.val == b.val and self.equals(a.left, b.left) and self.equals(a.right, b.right)
+    # dfs 枚举
+    def isSubtree(self, root: TreeNode, subRoot: TreeNode) -> bool:
+        if(self.equals(root, subRoot)): 
+            return True
+        if not root: 
+            return False
+
+        return self.isSubtree(root.left, subRoot) or self.isSubtree(root.right, subRoot)
+```
+
+* []
+
+```Java
+class Solution {
+    // 判断 a b 两棵树是否相等
+    private boolean equals(TreeNode a, TreeNode b) {
+        if (a == null && b == null) return true;
+        if (a == null || b == null) return false;
+        return a.val == b.val && equals(a.left, b.left) && equals(a.right, b.right);
+    }
+    // dfs 枚举
+    public boolean isSubtree(TreeNode root, TreeNode subRoot) {
+        return equals(root, subRoot) 
+            || (root != null && (isSubtree(root.left, subRoot) || isSubtree(root.right, subRoot)));
+    }
+}
+```
+
+* []
+
+```Kotlin
+class Solution {
+    // 判断 a b 两棵树是否相等
+    fun equals(a: TreeNode?, b: TreeNode?): Boolean{
+        if(a == null && b == null) return true 
+        if(a == null || b == null) return false 
+        return a.`val` == b.`val` && equals(a.left, b.left) && equals(a.right, b.right)
+    }
+    // dfs 枚举
+    fun isSubtree(root: TreeNode?, subRoot: TreeNode?): Boolean {
+        if(equals(root, subRoot)) return true 
+        if(root == null) return false
+        return isSubtree(root.left, subRoot) || isSubtree(root.right, subRoot)
+    }
+}
+```
+
+## 复杂度
+
+时间：$O(m\cdot min(m, n))$
+时间：$O(m\cdot min(m, n))$
+
+# 解法二：仅在深度匹配时判断相等
+
+## 思路
+
+深度相同是两棵树相等的必要不充分条件。那么以下方为例，只用比较 subRoot 和两个红框中的子树是否相等即可。
+
+![Screenshot 2024-07-27 at 6.59.11 PM.png](https://pic.leetcode.cn/1722078013-DbjxhR-Screenshot%202024-07-27%20at%206.59.11%20PM.png)
+
+我们可以先计算出 subRoot 的深度，再在一次 DFS 中计算 root 各棵子树的深度，在子树深度和 subRoot 深度一致时比较是否相等即可。
+
+## 代码
+
+* []
+
+```C++
+class Solution {
+private:
+    int subRootDepth = -1;
+    bool rootContainsSubRoot = false;
+    
+    // 判断 a b 两棵树是否相等
+    bool equals(TreeNode* a, TreeNode* b) {
+        if(a == nullptr && b == nullptr) return true;
+        if(a == nullptr || b == nullptr) return false;
+        return a->val == b->val && equals(a->left, b->left) && equals(a->right, b->right);
+    }
+
+    int getDepth(TreeNode* node, TreeNode* subRoot) {
+        if(rootContainsSubRoot || !node) return 0;
+        int depth = max(getDepth(node->left, subRoot), getDepth(node->right, subRoot)) + 1;
+
+        // subRootDepth 的初值为 -1，depth >= 0
+        // 当 depth == subRootDepth 时，说明如果 subRoot 的深度已经计算得出
+        // 再看 node 和 subRoot 两棵树是否相等
+        rootContainsSubRoot |= depth == subRootDepth && equals(node, subRoot);
+
+        return depth;
+    }
+    
+public:
+    bool isSubtree(TreeNode* root, TreeNode* subRoot) {
+        subRootDepth = getDepth(subRoot, subRoot);
+        getDepth(root, subRoot);
+        return rootContainsSubRoot;
+    }
+};
+```
+
+* []
+
+```Python
+class Solution:
+    def isSubtree(self, root: TreeNode, subRoot: TreeNode) -> bool:
+        subRootDepth = -1
+        rootContainsSubRoot = False
+
+        # 判断 a b 两棵树是否相等
+        def equals(a: TreeNode, b: TreeNode) -> bool:
+            if not a and not b:
+                return True
+            if not a or not b:
+                return False
+            return a.val == b.val and equals(a.left, b.left) and equals(a.right, b.right)
+
+        # 计算树的深度
+        def getDepth(node: TreeNode) -> int:
+            nonlocal subRootDepth, rootContainsSubRoot
+            if rootContainsSubRoot or not node:
+                return 0
+            depth = max(getDepth(node.left), getDepth(node.right)) + 1
+
+            # subRootDepth 的初值为 -1，depth >= 0
+            # 当 depth == subRootDepth 时，说明如果 subRoot 的深度已经计算得出
+            # 再看 node 和 subRoot 两棵树是否相等
+            rootContainsSubRoot |= depth == subRootDepth and equals(node, subRoot)
+
+            return depth
+
+        subRootDepth = getDepth(subRoot)
+        getDepth(root)
+
+        return rootContainsSubRoot
+```
+
+* []
+
+```Java
+class Solution {
+    private int subRootDepth = -1;
+    private boolean rootContainsSubRoot = false;
+
+    // 判断 a b 两棵树是否相等
+    private boolean equals(TreeNode a, TreeNode b) {
+        if(a == null && b == null) return true;
+        if(a == null || b == null) return false;
+        return a.val == b.val && equals(a.left, b.left) && equals(a.right, b.right);
+    }
+
+    // 计算树的深度
+    private int getDepth(TreeNode node, TreeNode subRoot) {
+        if(rootContainsSubRoot || node == null) return 0;
+        int depth = Math.max(getDepth(node.left, subRoot), getDepth(node.right, subRoot)) + 1;
+
+        // subRootDepth 的初值为 -1，depth >= 0
+        // 当 depth == subRootDepth 时，说明如果 subRoot 的深度已经计算得出
+        // 再看 node 和 subRoot 两棵树是否相等
+        rootContainsSubRoot |= depth == subRootDepth && equals(node, subRoot);
+
+        return depth;
+    }
+
+    public boolean isSubtree(TreeNode root, TreeNode subRoot) {
+        subRootDepth = getDepth(subRoot, subRoot);
+        getDepth(root, subRoot);
+        return rootContainsSubRoot;
+    }
+}
+```
+
+* []
+
+```Kotlin
+class Solution {
+    fun isSubtree(root: TreeNode?, subRoot: TreeNode?): Boolean {
+        var subRootDepth = -1
+        var rootContainsSubRoot = false 
+
+        // 判断 a b 两棵树是否相等
+        fun equals(a: TreeNode?, b: TreeNode?): Boolean{
+            if(a == null && b == null) return true 
+            if(a == null || b == null) return false 
+            return a.`val` == b.`val` && equals(a.left, b.left) && equals(a.right, b.right)
+        }
+
+        // 计算树的深度
+        fun getDepth(node: TreeNode?): Int{
+            if(rootContainsSubRoot || node == null) return 0 
+            val depth = max(getDepth(node.left), getDepth(node.right)) + 1
+            
+            // subRootDepth 的初值为 -1，depth >= 0
+            // 当 depth == subRootDepth 时，说明如果 subRoot 的深度已经计算得出
+            // 看 node 和 subRoot 两棵树是否相等
+            if(depth == subRootDepth) 
+                rootContainsSubRoot = rootContainsSubRoot || equals(node, subRoot)
+
+            return depth
+        }
+
+        subRootDepth = getDepth(subRoot)
+        getDepth(root)
+
+        return rootContainsSubRoot
+    }
+}
+```
+
+## 复杂度
+
+时间复杂度：$O(m+n)$
+- 当 $m < n$ 时深度不会匹配，不会使用 equals。递归不会提前截止，时间复杂度为 $\Theta(n)$
+- 当 $m \geq n$ 时会使用 equals 来比较多次，但所用到的 root 多棵子树是不重叠的。记所需比较的子树的节点数为 ${T_1, T_2, ..., T_k}$，那么多次比较用到的节点数总和为 $\sum_{i=1}^k{O(min(T_i, n))} \leq O(m)$。再考虑递归可能提前截止，导致不用探索完 root，时间复杂度为 $O(m)$。
+
+空间复杂度：$O(m+n)$
+
+# 解法三：优化为 $O(m)$
+
+## 思路
+
+解法二是先计算出 subRoot 深度的，我们可以考虑针对 root 深度 $<$ subRoot 深度的情况
+优化。
+
+先同时对 root 和 subRoot BFS，
+- 如果 root 先遍历完毕，则说明 subRoot 更深，返回 `false` 即可，此时耗时 $\Theta(m)$。
+- 否则说明 root 深度 $\geq$ subRoot 深度，即 $m \geq n$，则可利用得到的 subRoot 深度。此后和解法二一致，此时耗时为 $O(m + n) = O(m)$。
+
+## 代码
+
+* []
+
+```C++
+class Solution {            
+private:
+    int subRootDepth = 0;
+    bool rootContainsSubRoot = false;
+
+    bool equals(TreeNode* a, TreeNode* b) {
+        if (a == nullptr && b == nullptr) return true;
+        if (a == nullptr || b == nullptr) return false;
+        return a->val == b->val && equals(a->left, b->left) && equals(a->right, b->right);
+    }
+
+    // 在子树深度和 subRoot 相同时判断相等
+    int getDepth(TreeNode* node, TreeNode* subRoot) {
+        if(rootContainsSubRoot || !node) return 0;
+        int depth = max(getDepth(node->left, subRoot), getDepth(node->right, subRoot)) + 1;
+        rootContainsSubRoot |= depth == subRootDepth && equals(node, subRoot);
+        return depth;
+    }
+
+public:
+    bool isSubtree(TreeNode* root, TreeNode* subRoot) {
+        // 同时对 root 和 subRoot bfs
+        queue<TreeNode*> q1;
+        queue<TreeNode*> q2;
+        if (root != nullptr)
+            q1.push(root);
+        if (subRoot != nullptr)
+            q2.push(subRoot);
+
+        while (!q1.empty() && !q2.empty()) {
+            subRootDepth++;
+
+            int size = q1.size();
+            for (int i = 0; i < size; ++i) {
+                TreeNode* node = q1.front();
+                q1.pop();
+                if (node->left != nullptr)
+                    q1.push(node->left);
+                if (node->right != nullptr)
+                    q1.push(node->right);
+            }
+
+            size = q2.size();
+            for (int i = 0; i < size; ++i) {
+                TreeNode* node = q2.front();
+                q2.pop();
+                if (node->left != nullptr)
+                    q2.push(node->left);
+                if (node->right != nullptr)
+                    q2.push(node->right);
+            }
+        }
+
+        // 如果 subRoot 更深则截止，否则已经计算出 subRootDepth
+        if (!q2.empty()) return false;
+
+        getDepth(root, subRoot);
+        return rootContainsSubRoot;
+    }
+};
+```
+
+* []
+
+```Python
+class Solution:
+    def isSubtree(self, root: TreeNode, subRoot: TreeNode) -> bool:
+        subRootDepth = 0
+
+        # 同时对 root 和 subRoot bfs
+        q1 = collections.deque()
+        q2 = collections.deque()
+        if root:
+            q1.append(root)
+        if subRoot:
+            q2.append(subRoot)
+
+        while q1 and q2:
+            subRootDepth += 1
+
+            for q in [q1, q2]:
+                for _ in range(len(q)):
+                    node = q.popleft()
+                    if node.left:
+                        q.append(node.left)
+                    if node.right:
+                        q.append(node.right)
+
+        # 如果 subRoot 更深则截止，否则已经计算出 subRootDepth
+        if q2:
+            return False
+
+        # 判断 a b 两棵树是否相等
+        def equals(a: TreeNode, b: TreeNode) -> bool:
+            if not a and not b:
+                return True
+            if not a or not b:
+                return False
+            return a.val == b.val and equals(a.left, b.left) and equals(a.right, b.right)
+        
+        rootContainsSubRoot = False
+
+        # 在子树深度和 subRoot 相同时判断相等
+        def getDepth(node: TreeNode) -> int:
+            nonlocal rootContainsSubRoot
+            if rootContainsSubRoot or not node:
+                return 0
+            depth = max(getDepth(node.left), getDepth(node.right)) + 1
+            rootContainsSubRoot |= depth == subRootDepth and equals(node, subRoot)
+            return depth
+
+        getDepth(root)
+        return rootContainsSubRoot
+```
+
+* []
+
+```Java
+class Solution {
+    private int subRootDepth = 0;
+    private boolean rootContainsSubRoot = false;
+
+    private boolean equals(TreeNode a, TreeNode b) {
+        if (a == null && b == null) return true;
+        if (a == null || b == null) return false;
+        return a.val == b.val && equals(a.left, b.left) && equals(a.right, b.right);
+    }
+    // 在子树深度和 subRoot 相同时判断相等
+    private int getDepth(TreeNode node, TreeNode subRoot) {
+        if (rootContainsSubRoot || node == null) return 0;
+        int depth = Math.max(getDepth(node.left, subRoot), getDepth(node.right, subRoot)) + 1;
+        rootContainsSubRoot |= depth == subRootDepth && equals(node, subRoot);
+        return depth;
+    }
+
+    public boolean isSubtree(TreeNode root, TreeNode subRoot) {
+        // 同时对 root 和 subRoot bfs
+        LinkedList<TreeNode> q1 = new LinkedList<>();
+        LinkedList<TreeNode> q2 = new LinkedList<>();
+        if (root != null)
+            q1.add(root);
+        if (subRoot != null)
+            q2.add(subRoot);
+
+        while (!q1.isEmpty() && !q2.isEmpty()) {
+            subRootDepth++;
+
+            for (LinkedList<TreeNode> q : Arrays.asList(q1, q2)) {
+                int size = q.size();
+                for (int i = 0; i < size; i++) {
+                    TreeNode node = q.poll();
+                    if (node.left != null)
+                        q.add(node.left);
+                    if (node.right != null)
+                        q.add(node.right);
+                }
+            }
+        }
+        // 如果 subRoot 更深则截止，否则已经计算出 subRootDepth
+        if (!q2.isEmpty()) return false;
+
+        getDepth(root, subRoot);
+        return rootContainsSubRoot;
+    }
+}
+```
+
+* []
+
+```Kotlin
+class Solution {
+    fun isSubtree(root: TreeNode?, subRoot: TreeNode?): Boolean {
+        var subRootDepth = 0
+
+        // 同时对 root 和 subRoot bfs
+        val q1 = LinkedList<TreeNode>()
+        val q2 = LinkedList<TreeNode>()
+        if(root != null)
+            q1 += root
+        if(subRoot != null)
+            q2 += subRoot
+
+        while(q1.any() && q2.any()){
+            subRootDepth++
+
+            arrayOf(q1, q2).forEach{ q ->
+                repeat(q.size){
+                    val node = q.removeFirst()
+                    if(node.left != null)
+                        q += node.left 
+                    if(node.right != null)
+                        q += node.right
+                }
+            }
+        }
+        // 如果 subRoot 更深则截止，否则已经计算出 subRootDepth
+        if(q2.any()) return false 
+
+        // 判断 a b 两棵树是否相等
+        fun equals(a: TreeNode?, b: TreeNode?): Boolean{
+            if(a == null && b == null) return true 
+            if(a == null || b == null) return false 
+            return a.`val` == b.`val` && equals(a.left, b.left) && equals(a.right, b.right)
+        }
+        
+        var rootContainsSubRoot = false 
+        // 在子树深度和 subRoot 相同时判断相等
+        fun getDepth(node: TreeNode?): Int{
+            if(rootContainsSubRoot || node == null) return 0 
+            val depth = max(getDepth(node.left), getDepth(node.right)) + 1
+            rootContainsSubRoot = rootContainsSubRoot || depth == subRootDepth && equals(node, subRoot)
+            return depth
+        }
+
+        getDepth(root)
+        return rootContainsSubRoot
+    }
+}
+```
+
+## 复杂度
+
+时间：$O(m)$
+空间：$O(m)$
+
+# 推广
+
+以下皆为个人所著，兼顾了职场面试和本硕阶段的学术考试。
+- [不同层次的面试算法学习规划](https://leetcode.cn/circle/discuss/xV68NV/)
+- [附个人题解的双指针题单](https://leetcode.cn/circle/discuss/BI95fj/)
+- [图论入门](https://leetcode.cn/leetbook/detail/introduction-to-graph/)
+- [图论进阶](https://leetcode.cn/leetbook/detail/advanced-graph-theory/)
+
+点赞关注不迷路。祝君早日上岸，飞黄腾达！

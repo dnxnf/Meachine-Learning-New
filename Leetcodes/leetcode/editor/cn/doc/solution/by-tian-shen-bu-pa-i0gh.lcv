@@ -1,0 +1,32 @@
+### 解题思路
+
+1：如果一个字符串能由一个子字符串重复获得，则该字符串的长度必定能被子字符串长度整除。
+2：判断字符串的每一节是否相同
+
+### 代码
+
+* python3
+
+```python
+class Solution:
+    def repeatedSubstringPattern(self, s: str) -> bool:
+        temp =1
+        for i in range(1,len(s)//2+1):
+            if len(s)%i==0:       
+                #1：如果一个字符串能由一个子字符串重复获得，则该字符串的长度必定能被子字符串长度整除。
+
+                #2：判断字符串的每一节是否相同
+                m =i
+                while m<= len(s)-i:                    
+                    if s[m-i:m]!=s[m:m+i]:
+                        temp= 0
+                        break
+                    else:
+                        temp= 1
+                    m+=i
+                    
+                if temp==1:
+                    return True
+        return False 
+```
+

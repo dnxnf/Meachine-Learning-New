@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="com.wenjun.codeepiphany.challenge.settings">
+    <option name="challenges">
+      <map>
+        <entry key="$PROJECT_DIR$/Leetcodes/StringExercise/AddOne.py">
+          <value>
+            <ChallengeSettingsStateItem>
+              <option name="challengeId" value="1928073363994054656" />
+              <option name="challengeLanguageId" value="1928073364002443264" />
+              <option name="dojo" value="leetcodecn" />
+              <option name="language" value="python" />
+              <option name="solutionId" value="1928073364006637568" />
+            </ChallengeSettingsStateItem>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/Leetcodes/learn.py">
+          <value>
+            <ChallengeSettingsStateItem>
+              <option name="challengeId" value="1928069210731319296" />
+              <option name="challengeLanguageId" value="1928069210852954112" />
+              <option name="dojo" value="leetcodecn" />
+              <option name="language" value="python" />
+              <option name="solutionId" value="1928069210861342720" />
+            </ChallengeSettingsStateItem>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
