@@ -29,4 +29,16 @@ def PrintListReversingly2(head):
         head = head.next
     while stack:
         print(stack.pop())
-    print()
+    # print()
+
+if __name__ == '__main__':
+    # 创建链表
+    head = ListNode(1)
+    head.next = ListNode(2)
+    head.next.next = ListNode(3)
+    head.next.next.next = ListNode(4)
+    # head.next.next = ListNode(5)
+    PrintListReversingly(head)
+    print('-----------')
+    PrintListReversingly2(head)
+

@@ -4,13 +4,12 @@
 例如输入前序遍历序列{1,2,4,7,3,5,6,8}和中序遍历序列{4,7,2,1,5,3,8,6}，则重建二叉树并返回。
 '''
 
-"""
-Definition of TreeNode:
+
+# Definition of TreeNode:
 class TreeNode:
     def __init__(self, val):
         self.val = val
         self.left, self.right = None, None
-"""
 
 
 class Solution:

@@ -597,6 +597,17 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/Leetcodes/leetcode/editor/cn/[1576]替换所有的问号.py">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/Leetcodes/leetcode/editor/cn/doc/content/[1576]替换所有的问号.md" />
+              <option name="frontendQuestionId" value="leetcode.cn1576" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/Leetcodes/leetcode/editor/cn/[1576]替换所有的问号.py" />
+              <option name="titleSlug" value="replace-all-s-to-avoid-consecutive-repeating-characters" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/Leetcodes/leetcode/editor/cn/[1584]连接所有点的最小费用.py">
           <value>
             <LeetcodeEditor>
@@ -2838,6 +2849,17 @@
               <option name="host" value="leetcode.cn" />
               <option name="path" value="$PROJECT_DIR$/Leetcodes/leetcode/editor/cn/[LCR 052]递增顺序搜索树.py" />
               <option name="titleSlug" value="NYBBNL" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/Leetcodes/leetcode/editor/cn/[LCR 063]单词替换.py">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/Leetcodes/leetcode/editor/cn/doc/content/[LCR 063]单词替换.md" />
+              <option name="frontendQuestionId" value="leetcode.cnLCR 063" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/Leetcodes/leetcode/editor/cn/[LCR 063]单词替换.py" />
+              <option name="titleSlug" value="UhWRSj" />
             </LeetcodeEditor>
           </value>
         </entry>

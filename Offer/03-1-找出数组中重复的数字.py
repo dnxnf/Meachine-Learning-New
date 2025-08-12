@@ -12,20 +12,33 @@
 
 
 def duplicate(arr):
+    # 检查输入是否为列表
     if not isinstance(arr, list):
         return -1
+
     length = len(arr)
+
+    # 验证数组中的每个元素
     for i in range(length):
+        # 检查元素是否为整数
         if not isinstance(arr[i], int):
             return -1
+        # 检查元素值是否在有效范围内 (0 到 length-1)
         if arr[i] < 0 or arr[i] > length - 1:
             return -1
+
+    # 查找重复数字的核心算法
     for i in range(length):
+        # 当元素不在其"正确"位置时进行交换
         while arr[i] != i:
-            if arr[i] == arr[arr[i]]:
+            # 如果发现重复
+            if arr[i] == arr[arr[i]]: # 当前元素和正确位置元素相同
                 return arr[i]
+            # 交换元素到其"正确"位置
             temp = arr[i]
             arr[i], arr[temp] = arr[temp], arr[i]
+
+    # 如果没有找到重复，返回-1
     return -1
 
 
