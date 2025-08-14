@@ -52,18 +52,27 @@
 
 from typing import List, Optional
 
+
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
-    def missingNumber(self, nums: List[int]) -> int:
+    def missingNumber1(self, nums: List[int]) -> int:
         n = len(nums)
         nums.sort()
         for i in range(n):
             if nums[i] != i:
                 return i
         return n
+
+    def missingNumber(self, nums: List[int]) -> int:
+        n = len(nums)
+        expected_sum = n * (n + 1) // 2
+        actual_sum = sum(nums)
+        return expected_sum - actual_sum
+
+
 # leetcode submit region end(Prohibit modification and deletion)
 
 if __name__ == "__main__":
     # 创建Solution实例
     solution = Solution()
-    print(solution)
+    print(solution.missingNumber([9, 6, 4, 2, 3, 5, 7, 0, 1]))

@@ -41,7 +41,7 @@ from typing import List, Optional
 
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
-    def productExceptSelf(self, nums: List[int]) -> List[int]:
+    def productExceptSelf1(self, nums: List[int]) -> List[int]:
         st = set()
         mul = 1
         for i in range(len(nums)):
@@ -63,6 +63,23 @@ class Solution:
             res[i] = mul // nums[i]
         return res
 
+    def productExceptSelf(self, nums: List[int]) -> List[int]:
+        n = len(nums)
+        answer = [1] * n  # 初始化输出数组
+
+        # 计算前缀积（从左到右）
+        left_product = 1
+        for i in range(n):
+            answer[i] = left_product  # answer[i] 存储左边乘积
+            left_product *= nums[i]  # 更新左边乘积
+        print(answer)
+        # 计算后缀积（从右到左），并直接乘到 answer[i] 上
+        right_product = 1
+        for i in range(n - 1, -1, -1):
+            answer[i] *= right_product  # 乘上右边乘积
+            right_product *= nums[i]  # 更新右边乘积
+
+        return answer
 
 # leetcode submit region end(Prohibit modification and deletion)
 

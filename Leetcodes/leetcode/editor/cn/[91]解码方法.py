@@ -108,4 +108,4 @@ class Solution:
 if __name__ == "__main__":
     # 创建Solution实例
     solution = Solution()
-    print(solution)
+    print(solution.numDecodings("12258"))

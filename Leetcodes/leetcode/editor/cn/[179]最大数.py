@@ -33,7 +33,7 @@ from typing import List, Optional
 
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
-    def largestNumber(self, nums: List[int]) -> str:
+    def largestNumber1(self, nums: List[int]) -> str:
         str_nums = list(map(str, nums))
 
         # Custom comparator
@@ -51,6 +51,34 @@ class Solution:
         if result[0] == '0':
             return '0'
         return result
+
+    def largestNumber_wrong(self, nums: List[int]) -> str:
+        # 用字典记录不同数字的特点，包括当前的位数，当前位数的数字，以及数字的长度
+        # 数字大的放前面，数字相同的谁位数小的放前面
+        # 最后按照字典的顺序拼接字符串
+        # 将数字转为字符串并提取特征
+        num_strs = [str(num) for num in nums]
+        digit_info = []
+        for s in num_strs:
+            digit_info.append({
+                'str': s,
+                'length': len(s),
+                'first_digit': int(s[0]),  # 首位数字
+                'num_str': s  # 保留字符串形式用于后续比较
+            })
+
+        # Step 2: 自定义排序规则
+        def sort_key(x):
+            # 按首位数字降序，长度升序，最后按字符串字典序降序
+            return (-x['first_digit'], x['length'], -int(x['num_str']))
+
+        digit_info.sort(key=sort_key)
+
+        # Step 3: 拼接结果
+        result = ''.join([info['str'] for info in digit_info])
+
+        # Step 4: 处理全零情况
+        return result if result[0] != '0' else '0'
 
 
 # leetcode submit region end(Prohibit modification and deletion)

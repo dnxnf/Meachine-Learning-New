@@ -33,11 +33,11 @@ from typing import List, Optional
 
 # leetcode submit region begin(Prohibit modification and deletion)
 # Definition for a binary tree node.
-# class TreeNode:
-#     def __init__(self, val=0, left=None, right=None):
-#         self.val = val
-#         self.left = left
-#         self.right = right
+class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
 
 
 class Solution:
@@ -58,4 +58,5 @@ class Solution:
 if __name__ == "__main__":
     # 创建Solution实例
     solution = Solution()
-    print(solution)
+    tree = TreeNode(5, TreeNode(7, TreeNode(9), TreeNode(8)), TreeNode(3, TreeNode(2), TreeNode(4)))
+    print(solution.flipTree(tree))

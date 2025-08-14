@@ -90,19 +90,60 @@
 
 from typing import List, Optional
 
+
 # leetcode submit region begin(Prohibit modification and deletion)
 # Definition for singly-linked list.
-# class ListNode:
-#     def __init__(self, x):
-#         self.val = x
-#         self.next = None
+class ListNode:
+    def __init__(self, x):
+        self.val = x
+        self.next = None
+
 
 class Solution:
+    def getIntersectionNode1(self, headA: ListNode, headB: ListNode) -> Optional[ListNode]:
+        dic1 = {}
+        dic2 = {}
+        while headA:
+            dic1[headA] = 1
+            headA = headA.next
+        while headB:
+            dic2[headB] = 1
+            headB = headB.next
+        for key in dic1:
+            if key in dic2:
+                return key
+        return None
+
     def getIntersectionNode(self, headA: ListNode, headB: ListNode) -> Optional[ListNode]:
-        
+        # 换一个方法
+        # 先遍历链表A，将所有节点值放入set中
+        set1 = set()
+        while headA:
+            set1.add(headA)
+            headA = headA.next
+        # 再遍历链表B，判断是否在set中
+        while headB:
+            if headB in set1:
+                return headB
+            headB = headB.next
+        return None
+
+
 # leetcode submit region end(Prohibit modification and deletion)
 
 if __name__ == "__main__":
     # 创建Solution实例
     solution = Solution()
-    print(solution)
+    node1 = ListNode(4)
+    node1.next = ListNode(1)
+    node1.next.next = ListNode(8)
+    node1.next.next.next = ListNode(4)
+    node1.next.next.next.next = ListNode(5)
+    node2 = ListNode(5)
+    node2.next = ListNode(6)
+    node2.next.next = ListNode(1)
+    node2.next.next.next = ListNode(8)
+    node2.next.next.next.next = ListNode(4)
+    node2.next.next.next.next.next = ListNode(5)
+
+    print(solution.getIntersectionNode(node1, node2))

@@ -29,4 +29,12 @@ class Solution:
         while num:
             count += 1
             num = (num - 1) & num
-        return count
+        return
+
+    def countOnes2(self, num):
+        cnt = 0
+        ans = bin(num)[2:]
+        for i in ans:
+            if i == '1':
+                cnt += 1
+        return cnt

@@ -36,5 +36,12 @@ class Solution:
             number[index + 1] = str(i)
             self.print_to_max_of_n_digits_recursively(number, length, index + 1)
 
+    def numbersByIteration2(self, n):
+        # write your code here
+        if n <= 0:
+            return
+        for i in range(10 ** n):
+            print(i)
 
 print(Solution().numbersByRecursion(3))
+print(Solution().numbersByIteration2(3))

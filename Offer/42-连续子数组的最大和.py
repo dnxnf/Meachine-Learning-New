@@ -43,3 +43,4 @@ class Solution2:
             min_sum = min(min_sum, prefix_sum)
 
         return max_sum
+print(Solution().maxSubArray([-2, 1, -3, 4, -1, 2, 1, -5, 4]))

@@ -5,12 +5,28 @@
 '''
 
 
+class ListNode:
+    def __init__(self, x):
+        self.val = x
+        self.next = None
+
+
 class Solution:
-    """
-    @param head: The first node of linked list.
-    @param n: An integer
-    @return: The head of linked list.
-    """
+    def removeNthFromEnd2(self, head: ListNode, k: int):
+        # write your code here
+        if k == 0 or head is None:
+            return None
+        fast = slow = head
+        # 快指针先走k步
+        for _ in range(k):
+            if not fast:
+                return None  # 链表长度不足k
+            fast = fast.next
+        # 快慢指针同时移动，直到快指针到达末尾
+        while fast:
+            fast = fast.next
+            slow = slow.next
+        return slow.val
 
     def removeNthFromEnd(self, head, n):
         # write your code here
@@ -26,3 +42,12 @@ class Solution:
             ahead_node = ahead_node.next
             behind_node = behind_node.next
         return behind_node
+
+head = ListNode(1)
+head.next = ListNode(2)
+head.next.next = ListNode(3)
+head.next.next.next = ListNode(4)
+head.next.next.next.next = ListNode(5)
+head.next.next.next.next.next = ListNode(6)
+s = Solution()
+print(s.removeNthFromEnd2(head, 10))

@@ -24,3 +24,4 @@ class Solution:
                 count += high * base
             base *= 10
         return count
+print(Solution().number_of_1(13))

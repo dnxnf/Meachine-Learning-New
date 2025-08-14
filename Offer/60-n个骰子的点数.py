@@ -1,5 +1,6 @@
 '''
-题目：把n个骰子扔在地上，所有骰子朝上一面的点数之和为s。输入n，打印出s的所有可能的值出现的概率。
+题目：把n个骰子扔在地上，所有骰子朝上一面的点数之和为s。
+输入n，打印出s的所有可能的值出现的概率。
 '''
 
 '''
@@ -54,3 +55,8 @@ class Solution2:
         total = self.max_value ** num
         for s in range(num, self.max_value * num + 1):
             print(s, result_probability[s] / total)
+
+if __name__ == '__main__':
+    s = Solution()
+    s.print_probability(2)
+    s.print_probability(3)

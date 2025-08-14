@@ -46,10 +46,17 @@
 
 from typing import List, Optional
 
+
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def twoSum(self, numbers: List[int], target: int) -> List[int]:
-        
+        dic = {}
+        for i, num in enumerate(numbers):
+            if target - num in dic:
+                return [dic[target - num] + 1, i + 1]
+            dic[num] = i
+
+
 # leetcode submit region end(Prohibit modification and deletion)
 
 if __name__ == "__main__":

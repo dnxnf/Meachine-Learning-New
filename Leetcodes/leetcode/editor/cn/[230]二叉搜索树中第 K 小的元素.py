@@ -33,7 +33,7 @@
 #  进阶：如果二叉搜索树经常被修改（插入/删除操作）并且你需要频繁地查找第 k 小的值，你将如何优化算法？ 
 # 
 #  Related Topics 树 深度优先搜索 二叉搜索树 二叉树 👍 1000 👎 0
-
+import heapq
 from typing import List, Optional
 
 
@@ -68,13 +68,26 @@ class Solution:
         inorder(root)
         return res[k - 1]
 
-    def kthSmallest(self, root: Optional[TreeNode], k: int) -> int:
+    def kthSmallest3(self, root: Optional[TreeNode], k: int) -> int:
         stack = []
         while root or stack:
             while root:
                 stack.append(root)
                 root = root.left
             root = stack.pop()
+            k -= 1
+            if k == 0:
+                return root.val
+            root = root.right
+
+    def kthSmallest(self, root: Optional[TreeNode], k: int) -> int:
+        heap = []
+        # 使用堆排序,堆排序需要val，但是val不能给root复制，所以使用元组(val,root)
+        while root or heap:
+            while root:
+                heapq.heappush(heap, (root.val, root))
+                root = root.left
+            _, root = heapq.heappop(heap)
             k -= 1
             if k == 0:
                 return root.val

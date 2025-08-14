@@ -36,3 +36,7 @@ class Solution:
             elif nums[index_mid] <= nums[index2]:
                 index2 = index_mid
         return nums[index_mid]
+
+
+s = Solution()
+print(s.findMin([3, 4, 5, 1, 2]))
