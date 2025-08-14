@@ -46,16 +46,50 @@
 #  
 # 
 #  Related Topics 递归 数学 👍 879 👎 0
-
+from functools import lru_cache
+from math import factorial
 from typing import List, Optional
+
 
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
+    def getPermutation1(self, n: int, k: int) -> str:
+        # 超时
+        res = []
+        nums = list(range(1, n + 1))
+
+        def backtrack(path):
+            if len(res) == k:
+                return
+            if len(path) == n:
+                res.append(''.join(map(str, path)))
+                return
+            for num in nums:
+                if num not in path:
+                    backtrack(path + [num])
+
+        backtrack([])
+        return res[-1]
+
     def getPermutation(self, n: int, k: int) -> str:
-        
+        nums = list(range(1, n + 1))  # [1, 2, ..., n]
+        res = []
+        k -= 1  # 转换为 0-based 索引
+
+        for i in range(n, 0, -1):
+            # 计算当前位的阶乘
+            fact = factorial(i - 1)
+            # 确定当前位的数字索引
+            idx = k // fact
+            res.append(str(nums.pop(idx)))
+            # 更新 k
+            k %= fact
+
+        return ''.join(res)
+
 # leetcode submit region end(Prohibit modification and deletion)
 
 if __name__ == "__main__":
     # 创建Solution实例
     solution = Solution()
-    print(solution)
+    print(solution.getPermutation(3, 3))
