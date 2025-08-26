@@ -46,6 +46,7 @@
 # 
 #  Related Topics 深度优先搜索 广度优先搜索 图 最短路 堆（优先队列） 👍 867 👎 0
 import heapq
+from collections import deque
 from functools import lru_cache
 from typing import List, Optional
 
@@ -68,8 +69,8 @@ class Solution:
         dist = [float('inf')] * (n + 1)  # 记录节点到源点的最短距离
         dist[k] = 0  # 初始节点到源点的距离为 0
         while heap:
-            d, u = heapq.heappop(heap)  # 弹出距离最小的节点
-            if d > dist[u]: continue  # 距离超过当前最短距离，跳过
+            d, u = heapq.heappop(heap)  # 弹出距最小的节点
+            if d > dist[u]: continue  # 距离超过当前最短距离，跳过，可能有好几次操作
             for v, w in grape[u]:  # 遍历 u 的邻接节点
                 if dist[u] + w < dist[v]:  # 更新距离
                     dist[v] = dist[u] + w
@@ -77,26 +78,50 @@ class Solution:
         maxn = max(dist[1:])  # 找到最大距离
         return maxn if maxn != float('inf') else -1  # 返回 -1 表示不能到达所有节点
 
-    def networkDelayTime2(self, times: List[List[int]], n: int, k: int) -> int:
+    def networkDelayTime1_1(self, times: List[List[int]], n: int, k: int) -> int:
+        # dijkstra, 优先队列
+        graph = [[] for _ in range(n + 1)]
+        for u, v, w in times:
+            graph[u].append((v, w))
+        visited = [False] * (n + 1)
+        dist = [float('inf')] * (n + 1)
+        dist[k] = 0
+        heap = [(0, k)]
+        while heap:
+            d, u = heapq.heappop(heap)
+            if visited[u]: continue
+            visited[u] = True
+            for v, w in graph[u]:
+                if dist[u] + w < dist[v]:
+                    dist[v] = dist[u] + w
+                    heapq.heappush(heap, (dist[v], v))
+        maxn = max(dist[1:])
+        return maxn if maxn != float('inf') else -1
+
+    def networkDelayTime(self, times: List[List[int]], n: int, k: int) -> int:
         # 普通队列，复杂度为v*e
-        # bellman-ford算法,也就是bfs算法，复杂度为v*e,被称为SPFA
+        # bellman-ford算法,与bfs很像，复杂度为v*e,被称为SPFA
         graph = [[] for _ in range(n + 1)]
         for u, v, w in times:
             graph[u].append([v, w])
         #     邻接表和距离数组
         dist = [float('inf')] * (n + 1)
         dist[k] = 0
-        q = [k]
+        q = deque([k])
+        inqueue = [False] * (n + 1)
+        inqueue[k] = True
         while q:
-            u = q.pop(0)
+            u = q.popleft()
+            inqueue[u] = False
             # 遍历所有邻居
             for v, w in graph[u]:
                 # 松弛操作：如果找到更短路径
                 # 如果到达v的距离小于等于到u的距离加上v到u的距离，则更新v的距离
                 if dist[v] > dist[u] + w:
                     dist[v] = dist[u] + w
-                    if v not in q:  # 避免重复处理
+                    if not inqueue[v]:
                         q.append(v)
+                        inqueue[v] = True
 
         maxn = max(dist[1:])
         return maxn if maxn != float('inf') else -1
@@ -150,7 +175,7 @@ class Solution:
         # print(max_dist)
         return max_dist if max_dist != float('inf') else -1
 
-    def networkDelayTime(self, times: List[List[int]], n: int, k: int) -> int:
+    def networkDelayTime5(self, times: List[List[int]], n: int, k: int) -> int:
         # 只求k到其他节点的路径
         graph = [[float('inf')] * (n + 1) for _ in range(n + 1)]
         for i in range(n + 1):

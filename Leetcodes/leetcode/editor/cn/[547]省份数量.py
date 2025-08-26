@@ -112,7 +112,7 @@ class Solution:
                 res += 1
         return res
 
-    def findCircleNum(self, isConnected: List[List[int]]) -> int:
+    def findCircleNum3(self, isConnected: List[List[int]]) -> int:
         # bfs
         n = len(isConnected)
         visited = [False] * n
@@ -134,8 +134,50 @@ class Solution:
                 res += 1
         return res
 
+    def findCircleNum4(self, isConnected: List[List[int]]) -> int:
+        # dfs
+        # 先构建邻接表
+        m, n = len(isConnected), len(isConnected[0])
+        graph = [[] for _ in range(n)]
+        for i in range(m):
+            for j in range(n):
+                if isConnected[i][j] == 1:
+                    graph[i].append(j)
+        # 开始dfs
+        visited = [False] * n
+        res = 0
 
+        def dfs(i):
+            visited[i] = True
+            for j in graph[i]:
+                if not visited[j]:
+                    dfs(j)
 
+        for i in range(n):
+            if not visited[i]:
+                dfs(i)
+                res += 1
+        return res
+
+    def findCircleNum(self, isConnected: List[List[int]]) -> int:
+#         bfs
+        n = len(isConnected)
+        visited = [False] * n
+        res = 0
+        q = deque()
+        # 对于每个节点，都加入队列进行广搜,并且标记访问过的节点
+        for i in range(n):
+            if not visited[i]:
+                q.append(i)
+                visited[i] = True
+                while q:
+                    node = q.popleft()
+                    for j in range(n):
+                        if isConnected[node][j] == 1 and not visited[j]:
+                            q.append(j)
+                            visited[j] = True
+                res += 1
+        return res
 
 # leetcode submit region end(Prohibit modification and deletion)
 

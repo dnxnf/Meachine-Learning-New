@@ -1224,6 +1224,17 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/Leetcodes/leetcode/editor/cn/[2418]按身高排序.py">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/Leetcodes/leetcode/editor/cn/doc/content/[2418]按身高排序.md" />
+              <option name="frontendQuestionId" value="leetcode.cn2418" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/Leetcodes/leetcode/editor/cn/[2418]按身高排序.py" />
+              <option name="titleSlug" value="sort-the-people" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/Leetcodes/leetcode/editor/cn/[242]有效的字母异位词.py">
           <value>
             <LeetcodeEditor>
@@ -1279,6 +1290,17 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/Leetcodes/leetcode/editor/cn/[2685]统计完全连通分量的数量.py">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/Leetcodes/leetcode/editor/cn/doc/content/[2685]统计完全连通分量的数量.md" />
+              <option name="frontendQuestionId" value="leetcode.cn2685" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/Leetcodes/leetcode/editor/cn/[2685]统计完全连通分量的数量.py" />
+              <option name="titleSlug" value="count-the-number-of-complete-components" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/Leetcodes/leetcode/editor/cn/[268]丢失的数字.py">
           <value>
             <LeetcodeEditor>
@@ -1298,6 +1320,17 @@
               <option name="host" value="leetcode.cn" />
               <option name="path" value="$PROJECT_DIR$/Leetcodes/leetcode/editor/cn/[26]删除有序数组中的重复项.py" />
               <option name="titleSlug" value="remove-duplicates-from-sorted-array" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/Leetcodes/leetcode/editor/cn/[2724]排序方式.py">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/Leetcodes/leetcode/editor/cn/doc/content/[2724]排序方式.md" />
+              <option name="frontendQuestionId" value="leetcode.cn2724" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/Leetcodes/leetcode/editor/cn/[2724]排序方式.py" />
+              <option name="titleSlug" value="sort-by" />
             </LeetcodeEditor>
           </value>
         </entry>
@@ -2808,6 +2841,17 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/Leetcodes/leetcode/editor/cn/[912]排序数组.py">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/Leetcodes/leetcode/editor/cn/doc/content/[912]排序数组.md" />
+              <option name="frontendQuestionId" value="leetcode.cn912" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/Leetcodes/leetcode/editor/cn/[912]排序数组.py" />
+              <option name="titleSlug" value="sort-an-array" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/Leetcodes/leetcode/editor/cn/[91]解码方法.py">
           <value>
             <LeetcodeEditor>
@@ -2970,6 +3014,17 @@
               <option name="host" value="leetcode.cn" />
               <option name="path" value="$PROJECT_DIR$/Leetcodes/leetcode/editor/cn/[LCP 07]传递信息.py" />
               <option name="titleSlug" value="chuan-di-xin-xi" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/Leetcodes/leetcode/editor/cn/[LCP 20]快速公交.py">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/Leetcodes/leetcode/editor/cn/doc/content/[LCP 20]快速公交.md" />
+              <option name="frontendQuestionId" value="leetcode.cnLCP 20" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/Leetcodes/leetcode/editor/cn/[LCP 20]快速公交.py" />
+              <option name="titleSlug" value="meChtZ" />
             </LeetcodeEditor>
           </value>
         </entry>

@@ -56,7 +56,7 @@ while True:
             x[i] = int(x[i])
             y[i] = int(y[i])
             z[i] = int(z[i])
-        if x[0]!= 255 or x[3]!=0 or max(x+y+z)>255 or min(x+y+z)<0:
+        if x[0] != 255 or x[3] != 0 or max(x + y + z) > 255 or min(x + y + z) < 0:
             print('1')
         else:
             for i in range(len(x)):
