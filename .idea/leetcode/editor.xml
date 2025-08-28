@@ -344,6 +344,17 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/Leetcodes/leetcode/editor/cn/[1288]删除被覆盖区间.py">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/Leetcodes/leetcode/editor/cn/doc/content/[1288]删除被覆盖区间.md" />
+              <option name="frontendQuestionId" value="leetcode.cn1288" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/Leetcodes/leetcode/editor/cn/[1288]删除被覆盖区间.py" />
+              <option name="titleSlug" value="remove-covered-intervals" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/Leetcodes/leetcode/editor/cn/[128]最长连续序列.py">
           <value>
             <LeetcodeEditor>
@@ -396,6 +407,17 @@
               <option name="host" value="leetcode.cn" />
               <option name="path" value="$PROJECT_DIR$/Leetcodes/leetcode/editor/cn/[131]分割回文串.py" />
               <option name="titleSlug" value="palindrome-partitioning" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/Leetcodes/leetcode/editor/cn/[1326]灌溉花园的最少水龙头数目.py">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/Leetcodes/leetcode/editor/cn/doc/content/[1326]灌溉花园的最少水龙头数目.md" />
+              <option name="frontendQuestionId" value="leetcode.cn1326" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/Leetcodes/leetcode/editor/cn/[1326]灌溉花园的最少水龙头数目.py" />
+              <option name="titleSlug" value="minimum-number-of-taps-to-open-to-water-a-garden" />
             </LeetcodeEditor>
           </value>
         </entry>
