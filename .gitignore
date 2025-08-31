@@ -1,0 +1,26 @@
+# 忽略特定文件夹
+/someProject/CV_python/
+/someProject/imageAndModel/
+#another_folder/
+
+# Python 相关忽略
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.env
+venv/
+env/
+
+# IDE 文件
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# 系统文件
+.DS_Store
+Thumbs.db
+
+# 日志文件
+*.log
