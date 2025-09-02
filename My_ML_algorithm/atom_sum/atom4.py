@@ -71,8 +71,8 @@ for cc in carbon_counts:
                 "Carbon Count": cc,
                 "Extend Methyl": "有" if extend else "无",
                 "Hybridization": hybrid,
-                "Segmented Model": seg_pred,
-                "Linear Model": lin_pred
+                "Segmented Models": seg_pred,
+                "Linear Models": lin_pred
             })
 
 df = pd.DataFrame(data)
@@ -83,8 +83,8 @@ print(df.head())
 
 # 将数据从宽格式转换为长格式
 df_melted = df.melt(id_vars=["Carbon Count", "Extend Methyl", "Hybridization"],
-                    value_vars=["Segmented Model", "Linear Model"],
-                    var_name="Model", value_name="Prediction")
+                    value_vars=["Segmented Models", "Linear Models"],
+                    var_name="Models", value_name="Prediction")
 
 # 设置中文字体
 plt.rcParams['font.sans-serif'] = ['SimHei']
@@ -103,7 +103,7 @@ g = sns.FacetGrid(df_melted, col="Hybridization",
 # 绘制模型预测线，区分不同模型
 g.map(sns.lineplot, "Carbon Count", "Prediction",
       markers=True, dashes=False, lw=3, alpha=0.8,
-      style_order=["Segmented Model", "Linear Model"])
+      style_order=["Segmented Models", "Linear Models"])
 
 # 添加图例
 g.add_legend()

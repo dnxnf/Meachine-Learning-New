@@ -290,7 +290,7 @@ class Discriminator(nn.Module):
         )
 
     def forward(self, image):
-        # shape of image: [batchsize, 1, 28, 28]
+        # shape of Image: [batchsize, 1, 28, 28]
  		# 把图像变成向量然后判别
         prob = self.model(image.reshape(image.shape[0], -1))
 

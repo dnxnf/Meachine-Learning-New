@@ -39,7 +39,7 @@ print("输出参数w:", weights[1:][0])  # 输出模型参数w
 print("输出参数:b", weights[0])  # 输出参数b
 
 X_test = np.linspace(0, 1, 100)
-plt.plot(X_test, X_test * weights[1][0] + weights[0][0], label="Model")
+plt.plot(X_test, X_test * weights[1][0] + weights[0][0], label="Models")
 plt.plot(X_test, true_fun(X_test), label="True function")
 plt.scatter(X_train, y_train)  # 画出训练集的点
 plt.legend(loc="best")
