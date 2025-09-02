@@ -40,7 +40,7 @@ output:
 # 重新理解题目：每个节点必须能够访问到至少一个服务点
 # 节点i可以通过最多di条链路来访问服务点
 # 需要找到最少数量的服务点，使得所有节点都能访问到至少一个服务点
-def solve(n, d):
+def solve1(n, d):
     # 计算每个节点能访问到的服务点位置
     # 节点i可以访问到位置j，如果 |i-j| <= d[i]
     # 注意：题目中节点编号从1开始
@@ -84,6 +84,62 @@ def solve(n, d):
 
     return service_points
 
+    # 我们可以将问题转化为：选择最少的点，使得每个区间[i - di, i + di]都至少包含一个被选中的点。
+    # 这是一个典型的区间覆盖问题，可以用贪心算法解决。
+    '''
+    预处理区间：对于每个节点 i，计算它能覆盖的区间 [left_i, right_i]
+    left_i = max(1, i - di) （节点编号从1开始）
+    right_i = min(n, i + di)
+    按右端点排序：将所有区间按右端点从小到大排序
+    贪心选择：
+    初始化：当前覆盖位置 curr_end = 0，服务点数量 count = 0
+    遍历排序后的区间：
+    如果区间的左端点 > curr_end，说明需要新的服务点
+    选择当前区间的右端点作为服务点位置更新 curr_end 为当前服务点能覆盖到的最远位置
+    '''
+
+
+def solve(num, data):
+    """
+    解决服务器节点部署问题
+    参数:
+    num: 节点数 n
+    data: 每个节点的传输限制列表 [d1, d2, ..., dn]
+    返回:
+    最少需要部署的服务点数
+    要让每个区间都有服务点，按照右端点排序，后面的右端点都大于前面的右端点，
+    将每个服务点部署到右端点，然后比较后面的和前面的左端点，左端点能在已部署的服务点的右端点之前，则不用管
+    """
+    n = num  # 节点数
+
+    # 为每个节点创建覆盖区间 [left, right]
+    intervals = []
+    for i in range(1, n + 1):
+        di = data[i - 1]  # 第i个节点的传输限制
+        # 计算节点i能覆盖的左边界：max(1, i - di) 确保不小于1（节点编号从1开始）
+        left = max(1, i - di)
+        # 计算节点i能覆盖的右边界：min(n, i + di) 确保不大于n
+        right = min(n, i + di)
+        intervals.append((left, right))
+
+    # 关键步骤：按区间的右端点进行升序排序
+    # 这样我们可以优先处理结束较早的区间，使用贪心策略选择服务点
+    intervals.sort(key=lambda x: x[1])
+    print(intervals)
+    count = 0  # 记录需要的服务点数量
+    curr_end = 0  # 当前已覆盖到的最远位置（初始为0，表示还没覆盖任何节点）
+
+    # 遍历所有排序后的区间
+    for left, right in intervals:
+        # 如果当前区间的左端点大于已覆盖的最远位置
+        # 说明这个区间还没有被覆盖，需要新的服务点
+        if left > curr_end:
+            count += 1  # 增加服务点数量
+            curr_end = right  # 在当前区间的右端点部署服务点
+            # 在右端点部署可以覆盖尽可能多的后续区间
+
+    return count
+
 
 def submit():
     # 测试模式：自动运行多组示例
@@ -100,10 +156,10 @@ def submit():
 
     for i, (n, d) in enumerate(test_cases):
         result = solve(n, d)
-        print(f"测试用例 {i+1}: n={n}, d={d}")
+        print(f"测试用例 {i + 1}: n={n}, d={d}")
         print(f"结果: {result}")
         print(f"期望: {[3, 3, 4, 2, 3, 3, 3][i]}")
-        print(f"正确: {'正确' if result == [3, 3, 4, 2, 3, 3, 3][i] else '错误'}")
+        print('正确' if result == [3, 3, 4, 2, 3, 3, 3][i] else '错误')
         print("-" * 50)
 
     print("\n=== 手动输入模式 ===")

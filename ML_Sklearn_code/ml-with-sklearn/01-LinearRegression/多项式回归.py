@@ -27,7 +27,7 @@ for i in range(len(degrees)):
     
     scores = cross_val_score(pipeline, X[:, np.newaxis], y,scoring="neg_mean_squared_error", cv=10) # 使用交叉验证
     X_test = np.linspace(0, 1, 100)
-    plt.plot(X_test, pipeline.predict(X_test[:, np.newaxis]), label="Model")
+    plt.plot(X_test, pipeline.predict(X_test[:, np.newaxis]), label="Models")
     plt.plot(X_test, true_fun(X_test), label="True function")
     plt.scatter(X, y, edgecolor='b', s=20, label="Samples")
     plt.xlabel("x")

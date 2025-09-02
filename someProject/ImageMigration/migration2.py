@@ -8,8 +8,8 @@ import numpy as np
 
 # 创建参数解析器
 parser = argparse.ArgumentParser(description='Neural Style Transfer')
-parser.add_argument('--content_img', type=str, default='./data/4.jpg', help='Content image path')
-parser.add_argument('--style_img', type=str, default='./data/1.jpg', help='Style image path')
+parser.add_argument('--content_img', type=str, default='./data/4.jpg', help='Content Image path')
+parser.add_argument('--style_img', type=str, default='./data/1.jpg', help='Style Image path')
 parser.add_argument('--model_weights', type=str, default='D:/py/pycharmProjects/MachineLearning/CV-main/model/vgg16-397923af.pth', help='Path to VGG16 weights')
 parser.add_argument('--content_layers', type=str, default='conv_3', help='Comma-separated content layers (e.g., "conv_3")')
 parser.add_argument('--style_layers', type=str, default='conv_1,conv_2,conv_3,conv_4', help='Comma-separated style layers')

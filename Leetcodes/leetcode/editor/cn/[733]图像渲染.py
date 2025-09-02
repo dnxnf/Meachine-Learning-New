@@ -1,5 +1,5 @@
-# 有一幅以 m x n 的二维整数数组表示的图画 image ，其中 image[i][j] 表示该图画的像素值大小。你也被给予三个整数 sr , sc 和 
-# color 。你应该从像素 image[sr][sc] 开始对图像进行上色 填充 。 
+# 有一幅以 m x n 的二维整数数组表示的图画 Image ，其中 Image[i][j] 表示该图画的像素值大小。你也被给予三个整数 sr , sc 和
+# color 。你应该从像素 Image[sr][sc] 开始对图像进行上色 填充 。
 # 
 #  为了完成 上色工作： 
 # 
@@ -19,7 +19,7 @@
 #  
 # 
 #  
-#  输入：image = [[1,1,1],[1,1,0],[1,0,1]]，sr = 1, sc = 1, color = 2
+#  输入：Image = [[1,1,1],[1,1,0],[1,0,1]]，sr = 1, sc = 1, color = 2
 #  
 # 
 #  
@@ -43,7 +43,7 @@
 #  示例 2: 
 # 
 #  
-#  输入：image = [[0,0,0],[0,0,0]], sr = 0, sc = 0, color = 0
+#  输入：Image = [[0,0,0],[0,0,0]], sr = 0, sc = 0, color = 0
 #  
 # 
 #  
@@ -59,10 +59,10 @@
 #  提示: 
 # 
 #  
-#  m == image.length 
-#  n == image[i].length 
+#  m == Image.length
+#  n == Image[i].length
 #  1 <= m, n <= 50 
-#  0 <= image[i][j], color < 2¹⁶ 
+#  0 <= Image[i][j], color < 2¹⁶
 #  0 <= sr < m 
 #  0 <= sc < n 
 #  

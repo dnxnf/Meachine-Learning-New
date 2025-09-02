@@ -21,7 +21,7 @@ print("输出参数b：",model.intercept_) # 输出参数b
 
 
 X_test = np.linspace(0, 1, 100)
-plt.plot(X_test, model.predict(X_test[:, np.newaxis]), label="Model")
+plt.plot(X_test, model.predict(X_test[:, np.newaxis]), label="Models")
 plt.plot(X_test, true_fun(X_test), label="True function")
 plt.scatter(X_train,y_train) # 画出训练集的点
 plt.legend(loc="best")

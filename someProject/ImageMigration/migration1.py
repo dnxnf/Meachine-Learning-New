@@ -14,8 +14,8 @@ transform = transforms.Compose([
     transforms.ToTensor()
 ])
 parser = argparse.ArgumentParser()
-parser.add_argument('--content_img', type=str, default='./data/4.jpg', help='content image path')
-parser.add_argument('--style_img', type=str, default='./data/1.jpg', help='style image path')
+parser.add_argument('--content_img', type=str, default='./data/4.jpg', help='content Image path')
+parser.add_argument('--style_img', type=str, default='./data/1.jpg', help='style Image path')
 
 def loadimg(path=None):
     """加载并预处理图像，确保转换为RGB格式"""
