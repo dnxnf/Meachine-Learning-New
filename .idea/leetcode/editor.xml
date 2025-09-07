@@ -1653,6 +1653,17 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/Leetcodes/leetcode/editor/cn/[3495]使数组元素都变为零的最少操作次数.py">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/Leetcodes/leetcode/editor/cn/doc/content/[3495]使数组元素都变为零的最少操作次数.md" />
+              <option name="frontendQuestionId" value="leetcode.cn3495" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/Leetcodes/leetcode/editor/cn/[3495]使数组元素都变为零的最少操作次数.py" />
+              <option name="titleSlug" value="minimum-operations-to-make-array-elements-zero" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/Leetcodes/leetcode/editor/cn/[34]在排序数组中查找元素的第一个和最后一个位置.py">
           <value>
             <LeetcodeEditor>
@@ -3380,6 +3391,83 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/Leetcodes/leetcode/editor/cn/[面试题 01.05]一次编辑.py">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/Leetcodes/leetcode/editor/cn/doc/content/[面试题 01.05]一次编辑.md" />
+              <option name="frontendQuestionId" value="leetcode.cn面试题 01.05" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/Leetcodes/leetcode/editor/cn/[面试题 01.05]一次编辑.py" />
+              <option name="titleSlug" value="one-away-lcci" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/Leetcodes/leetcode/editor/cn/[面试题 01.07]旋转矩阵.py">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/Leetcodes/leetcode/editor/cn/doc/content/[面试题 01.07]旋转矩阵.md" />
+              <option name="frontendQuestionId" value="leetcode.cn面试题 01.07" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/Leetcodes/leetcode/editor/cn/[面试题 01.07]旋转矩阵.py" />
+              <option name="titleSlug" value="rotate-matrix-lcci" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/Leetcodes/leetcode/editor/cn/[面试题 01.08]零矩阵.py">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/Leetcodes/leetcode/editor/cn/doc/content/[面试题 01.08]零矩阵.md" />
+              <option name="frontendQuestionId" value="leetcode.cn面试题 01.08" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/Leetcodes/leetcode/editor/cn/[面试题 01.08]零矩阵.py" />
+              <option name="titleSlug" value="zero-matrix-lcci" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/Leetcodes/leetcode/editor/cn/[面试题 02.08]环路检测.py">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/Leetcodes/leetcode/editor/cn/doc/content/[面试题 02.08]环路检测.md" />
+              <option name="frontendQuestionId" value="leetcode.cn面试题 02.08" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/Leetcodes/leetcode/editor/cn/[面试题 02.08]环路检测.py" />
+              <option name="titleSlug" value="linked-list-cycle-lcci" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/Leetcodes/leetcode/editor/cn/[面试题 03.03]堆盘子.py">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/Leetcodes/leetcode/editor/cn/doc/content/[面试题 03.03]堆盘子.md" />
+              <option name="frontendQuestionId" value="leetcode.cn面试题 03.03" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/Leetcodes/leetcode/editor/cn/[面试题 03.03]堆盘子.py" />
+              <option name="titleSlug" value="stack-of-plates-lcci" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/Leetcodes/leetcode/editor/cn/[面试题 04.01]节点间通路.py">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/Leetcodes/leetcode/editor/cn/doc/content/[面试题 04.01]节点间通路.md" />
+              <option name="frontendQuestionId" value="leetcode.cn面试题 04.01" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/Leetcodes/leetcode/editor/cn/[面试题 04.01]节点间通路.py" />
+              <option name="titleSlug" value="route-between-nodes-lcci" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/Leetcodes/leetcode/editor/cn/[面试题 04.03]特定深度节点链表.py">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/Leetcodes/leetcode/editor/cn/doc/content/[面试题 04.03]特定深度节点链表.md" />
+              <option name="frontendQuestionId" value="leetcode.cn面试题 04.03" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/Leetcodes/leetcode/editor/cn/[面试题 04.03]特定深度节点链表.py" />
+              <option name="titleSlug" value="list-of-depth-lcci" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/Leetcodes/leetcode/editor/cn/[面试题 04.04]检查平衡性.py">
           <value>
             <LeetcodeEditor>
@@ -3388,6 +3476,50 @@
               <option name="host" value="leetcode.cn" />
               <option name="path" value="$PROJECT_DIR$/Leetcodes/leetcode/editor/cn/[面试题 04.04]检查平衡性.py" />
               <option name="titleSlug" value="check-balance-lcci" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/Leetcodes/leetcode/editor/cn/[面试题 04.05]合法二叉搜索树.py">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/Leetcodes/leetcode/editor/cn/doc/content/[面试题 04.05]合法二叉搜索树.md" />
+              <option name="frontendQuestionId" value="leetcode.cn面试题 04.05" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/Leetcodes/leetcode/editor/cn/[面试题 04.05]合法二叉搜索树.py" />
+              <option name="titleSlug" value="legal-binary-search-tree-lcci" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/Leetcodes/leetcode/editor/cn/[面试题 04.06]后继者.py">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/Leetcodes/leetcode/editor/cn/doc/content/[面试题 04.06]后继者.md" />
+              <option name="frontendQuestionId" value="leetcode.cn面试题 04.06" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/Leetcodes/leetcode/editor/cn/[面试题 04.06]后继者.py" />
+              <option name="titleSlug" value="successor-lcci" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/Leetcodes/leetcode/editor/cn/[面试题 04.08]首个共同祖先.py">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/Leetcodes/leetcode/editor/cn/doc/content/[面试题 04.08]首个共同祖先.md" />
+              <option name="frontendQuestionId" value="leetcode.cn面试题 04.08" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/Leetcodes/leetcode/editor/cn/[面试题 04.08]首个共同祖先.py" />
+              <option name="titleSlug" value="first-common-ancestor-lcci" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/Leetcodes/leetcode/editor/cn/[面试题 04.12]求和路径.py">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/Leetcodes/leetcode/editor/cn/doc/content/[面试题 04.12]求和路径.md" />
+              <option name="frontendQuestionId" value="leetcode.cn面试题 04.12" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/Leetcodes/leetcode/editor/cn/[面试题 04.12]求和路径.py" />
+              <option name="titleSlug" value="paths-with-sum-lcci" />
             </LeetcodeEditor>
           </value>
         </entry>

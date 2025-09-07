@@ -97,13 +97,14 @@ def KNN2_optimized(X_train, y_train, X_test, X_test_label=None, k=3):
     for test_sample in X_test:
         # 向量化计算距离（避免内层循环）
         distances = np.sqrt(np.sum((X_train - test_sample) ** 2, axis=1))
+        # 广播，得到一个兼容的矩阵(n_train,test_sample),也就是(10,2)
+        # 所以可以和每一个都直接算距离,axis=1求和（对每行求和），再开方
 
-        # 获取前k个最近邻的索引
         k_indices = np.argsort(distances)[:k]
-
+        # print(k_indices)
         # 获取对应的标签
         k_nearest_labels = y_train[k_indices]
-
+        print(k_nearest_labels)
         # 统计最常见的标签
         most_common = Counter(k_nearest_labels).most_common(1)[0][0]
         predictions.append(most_common)
@@ -116,11 +117,35 @@ def KNN2_optimized(X_train, y_train, X_test, X_test_label=None, k=3):
         return predictions, X_test_label
 
 
+def knn3(X_train, y_train, X_test, X_test_label=None, k=3):
+    def getdistance(x1, x2):
+        return np.sqrt(np.sum((x1 - x2) ** 2))
+    predictions = []
+    for i in range(len(X_test)):
+        distances = []
+        for j in range(len(X_train)):
+            dist = getdistance(X_test[i], X_train[j])
+            distances.append((dist, y_train[j])) # 距离和标签的组合
+        distances.sort(key=lambda x: x[0])
+        k_nearest_y = distances[:k]
+        k_nearest_labels = [x[1] for x in k_nearest_y]
+        most_common_y = Counter(k_nearest_labels).most_common(1)[0][0]
+        predictions.append(most_common_y)
+    if X_test_label is None:
+        return np.array(predictions)
+    else:
+        return np.array(predictions), X_test_label
+
 if __name__ == '__main__':
     X_train = np.array([[1, 2], [2, 3], [3, 1], [4, 3], [5, 2],
                         [6, 4], [7, 5], [8, 6], [9, 7], [10, 8]])
     y_train = np.array([0, 0, 0, 1, 1, 1, 1, 1, 1, 1])
     X_test = np.array([[5, 4], [6, 5], [7, 6], [8, 7], [9, 8]])
-    print(KNN2(X_train, y_train, X_test, k=3))
-    sample_test(X_train, y_train, X_test, k=3)
-    print(KNN2_optimized(X_train, y_train, X_test, k=3))
+    knn = KNN(k=3)
+    knn.fit(X_train, y_train)
+    y_pred = knn.predict(X_test)
+    print(y_pred)
+    # print(KNN2(X_train, y_train, X_test, k=3))
+    # sample_test(X_train, y_train, X_test, k=3)
+    # print(KNN2_optimized(X_train, y_train, X_test, k=3))
+    print(knn3(X_train, y_train, X_test, k=3))
