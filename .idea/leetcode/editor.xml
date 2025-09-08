@@ -333,6 +333,17 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/Leetcodes/leetcode/editor/cn/[124]二叉树中的最大路径和.py">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/Leetcodes/leetcode/editor/cn/doc/content/[124]二叉树中的最大路径和.md" />
+              <option name="frontendQuestionId" value="leetcode.cn124" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/Leetcodes/leetcode/editor/cn/[124]二叉树中的最大路径和.py" />
+              <option name="titleSlug" value="binary-tree-maximum-path-sum" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/Leetcodes/leetcode/editor/cn/[125]验证回文串.py">
           <value>
             <LeetcodeEditor>
@@ -1045,6 +1056,17 @@
               <option name="host" value="leetcode.cn" />
               <option name="path" value="$PROJECT_DIR$/Leetcodes/leetcode/editor/cn/[210]课程表 II.py" />
               <option name="titleSlug" value="course-schedule-ii" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/Leetcodes/leetcode/editor/cn/[213]打家劫舍 II.py">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/Leetcodes/leetcode/editor/cn/doc/content/[213]打家劫舍 II.md" />
+              <option name="frontendQuestionId" value="leetcode.cn213" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/Leetcodes/leetcode/editor/cn/[213]打家劫舍 II.py" />
+              <option name="titleSlug" value="house-robber-ii" />
             </LeetcodeEditor>
           </value>
         </entry>
@@ -3061,6 +3083,17 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/Leetcodes/leetcode/editor/cn/[LCP 19]秋叶收藏集.py">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/Leetcodes/leetcode/editor/cn/doc/content/[LCP 19]秋叶收藏集.md" />
+              <option name="frontendQuestionId" value="leetcode.cnLCP 19" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/Leetcodes/leetcode/editor/cn/[LCP 19]秋叶收藏集.py" />
+              <option name="titleSlug" value="UlBDOe" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/Leetcodes/leetcode/editor/cn/[LCP 20]快速公交.py">
           <value>
             <LeetcodeEditor>
@@ -3157,6 +3190,17 @@
               <option name="host" value="leetcode.cn" />
               <option name="path" value="$PROJECT_DIR$/Leetcodes/leetcode/editor/cn/[LCR 088]使用最小花费爬楼梯.py" />
               <option name="titleSlug" value="GzCJIP" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/Leetcodes/leetcode/editor/cn/[LCR 089]打家劫舍.py">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/Leetcodes/leetcode/editor/cn/doc/content/[LCR 089]打家劫舍.md" />
+              <option name="frontendQuestionId" value="leetcode.cnLCR 089" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/Leetcodes/leetcode/editor/cn/[LCR 089]打家劫舍.py" />
+              <option name="titleSlug" value="Gu0c2T" />
             </LeetcodeEditor>
           </value>
         </entry>

@@ -1,9 +1,10 @@
-# 忽略特定文件夹
 /someProject/CV_python/
 /someProject/imageAndModel/
+/SomeExaminationQuestions/
+/.gitignore/
 #another_folder/
 
-# Python 相关忽略
+# Python ??????
 __pycache__/
 *.pyc
 *.pyo
@@ -12,15 +13,15 @@ __pycache__/
 venv/
 env/
 
-# IDE 文件
+# IDE ???
 .idea/
 .vscode/
 *.swp
 *.swo
 
-# 系统文件
+# ?????
 .DS_Store
 Thumbs.db
 
-# 日志文件
+# ??????
 *.log
