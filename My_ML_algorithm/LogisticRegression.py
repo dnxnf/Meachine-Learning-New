@@ -1,12 +1,12 @@
 #!/usr/bin/env python
 # -*- coding: UTF-8 -*-
-'''
-@Project     ：MachineLearning 
+"""
+@Project     ：MachineLearning
 @File        ：LogisticRegression.py
 @Description ：手写逻辑回归算法,逻辑回归，实际上是分类
 @Author      ：Hello World
-@Date        ：2025/9/6 下午9:37 
-'''
+@Date        ：2025/9/6 下午9:37
+"""
 import numpy as np
 from sklearn.datasets import make_classification
 from sklearn.model_selection import train_test_split
@@ -115,7 +115,7 @@ class LogisticRegression:
             if i % 100 == 0:
                 print(f"Iteration {i}: loss = {loss:.6f}")
 
-        return self # 返回实例对象本身
+        return self  # 返回实例对象本身
 
     def predict_prob(self, X):
         """
@@ -171,8 +171,8 @@ class LogisticRegression:
         包含权重和偏置的字典
         """
         return {
-            'weights': self.weights,
-            'bias': self.bias,
+            "weights": self.weights,
+            "bias": self.bias,
         }
 
 
@@ -193,7 +193,7 @@ def test_logistic_regression():
         n_informative=2,  # 有信息的特征数
         n_redundant=0,  # 冗余特征数
         n_clusters_per_class=1,
-        random_state=42  # 随机种子
+        random_state=42,  # 随机种子
     )
     print(f"数据集形状: X={X.shape}, y={y.shape}")
 
@@ -205,17 +205,12 @@ def test_logistic_regression():
 
     # 3. 划分训练集和测试集
     print("\n3. 划分训练集和测试集...")
-    X_train, X_test, y_train, y_test = train_test_split(
-        X_scaled, y, test_size=0.2, random_state=42
-    )
+    X_train, X_test, y_train, y_test = train_test_split(X_scaled, y, test_size=0.2, random_state=42)
     print(f"训练集: {X_train.shape}, 测试集: {X_test.shape}")
 
     # 4. 创建和训练模型
     print("\n4. 创建并训练逻辑回归模型...")
-    model = LogisticRegression(
-        learning_rate=0.1,  # 学习率
-        num_iterations=1000  # 迭代次数
-    )
+    model = LogisticRegression(learning_rate=0.1, num_iterations=1000)  # 学习率  # 迭代次数
 
     print("开始训练...")
     model.fit(X_train, y_train)
@@ -246,9 +241,7 @@ def test_logistic_regression():
 
     print("前5个测试样本的预测结果:")
     for i in range(len(X_sample)):
-        print(f"样本{i + 1}: 真实值={y_sample_true[i]}, "
-              f"预测值={y_sample_pred[i]}, "
-              f"概率={y_sample_prob[i]:.4f}")
+        print(f"样本{i + 1}: 真实值={y_sample_true[i]}, " f"预测值={y_sample_pred[i]}, " f"概率={y_sample_prob[i]:.4f}")
 
     print("\n" + "=" * 50)
     print("模型测试完成!")
