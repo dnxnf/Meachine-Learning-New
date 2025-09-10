@@ -8,6 +8,8 @@
       <excludeFolder url="file://$MODULE_DIR$/someProject/imageAndModel/Image" />
       <excludeFolder url="file://$MODULE_DIR$/someProject/imageAndModel/Models" />
       <excludeFolder url="file://$MODULE_DIR$/venv" />
+      <excludeFolder url="file://$MODULE_DIR$/someProject/imageAndModel" />
+      <excludeFolder url="file://$MODULE_DIR$/someProject/其他资料" />
     </content>
     <orderEntry type="jdk" jdkName="Python 3.9 (MachineLearning)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />

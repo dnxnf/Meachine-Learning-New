@@ -7,3 +7,5 @@
 @Author      ：Hello World
 @Date        ：2025/8/13 下午12:32 
 '''
+
+dic = defauldict(int)
