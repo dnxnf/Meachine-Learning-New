@@ -4,13 +4,13 @@
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/.idea/codeStyles" />
-      <excludeFolder url="file://$MODULE_DIR$/SomeExaminationQuestions" />
       <excludeFolder url="file://$MODULE_DIR$/someProject/imageAndModel/Image" />
       <excludeFolder url="file://$MODULE_DIR$/someProject/imageAndModel/Models" />
       <excludeFolder url="file://$MODULE_DIR$/venv" />
       <excludeFolder url="file://$MODULE_DIR$/someProject/imageAndModel" />
       <excludeFolder url="file://$MODULE_DIR$/someProject/其他资料" />
     </content>
+    <content url="file://$MODULE_DIR$/SomeExaminationQuestions/华为choice100" />
     <orderEntry type="jdk" jdkName="Python 3.9 (MachineLearning)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
