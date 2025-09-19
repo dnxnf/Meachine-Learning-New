@@ -50,16 +50,25 @@
 #  
 # 
 #  Related Topics 数组 动态规划 👍 1431 👎 0
-
+from collections import deque
 from typing import List, Optional
+
 
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def change(self, amount: int, coins: List[int]) -> int:
-        
+        dp = [0] * (amount + 1)
+        # dp 表示到达i金额时，有多少种方法
+        dp[0] = 1
+        for coin in coins:
+            for i in range(coin, amount + 1):
+                dp[i] += dp[i - coin]
+        return dp[amount]
+
+
 # leetcode submit region end(Prohibit modification and deletion)
 
 if __name__ == "__main__":
     # 创建Solution实例
     solution = Solution()
-    print(solution)
+    print(solution.change(5, [1, 2, 5]))
