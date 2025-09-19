@@ -32,7 +32,7 @@ from typing import List, Optional
 # favour 动态规划思想，子集合加反向遍历
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
-    def canPartition(self, nums: List[int]) -> bool:
+    def canPartition1(self, nums: List[int]) -> bool:
         sumn = sum(nums)
         # nums.sort()
         # 是奇数肯定不能返回
@@ -60,7 +60,37 @@ class Solution:
 # j = 10: dp[10] = dp[10] or dp[5]（dp[5] 为 False，dp[10] 保持 False）。
 # j = 6: dp[6] = dp[6] or dp[1]（dp[1] 为 True，所以 dp[6] 变为 True）。
 # j = 5: dp[5] = dp[5] or dp[0]（dp[0] 为 True，所以 dp[5] 变为 True）。
+    def canPartition2(self, nums: List[int]) -> bool:
+        # 当成一个01背包问题，dp[i][j]表示前i个元素在j容量下的最大价值
+        summ = sum(nums)
+        if summ % 2 != 0:
+            return False
+        target = summ // 2
+        n = len(nums)
+        dp = [[0] * (target + 1) for _ in range(n + 1)]
+        for i in range(1, n + 1):
+            for j in range(1, target + 1):
+                if j < nums[i - 1]:
+                    dp[i][j] = dp[i - 1][j]
+                else:
+                    dp[i][j] = max(dp[i - 1][j], dp[i - 1][j - nums[i - 1]] + nums[i - 1])
+        return dp[n][target] == target
 
+    def canPartition(self, nums: List[int]) -> bool:
+        # 同样是01背包，但是使用dp[w],从nums选择元素放入最多能装元素和为
+        # w 的背包中，得到的元素和最大为多少
+        summ = sum(nums)
+        if summ % 2 != 0:
+            return False
+        target = summ // 2
+        n = len(nums)
+        dp = [0] * (target + 1)
+        for i in range(n):
+            for j in range(target, nums[i] - 1, -1):
+                dp[j] = max(dp[j], dp[j - nums[i]] + nums[i])
+                if dp[j] == target:
+                    return True
+        return dp[target] == target
 # leetcode submit region end(Prohibit modification and deletion)
 
 if __name__ == "__main__":

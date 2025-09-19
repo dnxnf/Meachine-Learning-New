@@ -1,66 +1,97 @@
-#!/usr/bin/env python
-# -*- coding: UTF-8 -*-
+def dfs(i, j, count, out):
+    # 如果到了边界、遇到了X或已经在连通域中，则直接返回结果。
+    if i < 0 or i >= m or j < 0 or j >= n \
+            or areas[i][j] == "X" or (i, j) in checked:
+        return count
+
+    checked.add((i, j))
+    # 当遇到入口时，则加入到结果列表中
+    if i == 0 or i == m - 1 or j == 0 or j == n - 1:
+        out.append((i, j))
+
+    count += 1
+    # 继续对各个方向进行深度优先搜索
+    for offsetX, offsetY in directions:
+        newI = i + offsetX
+        newJ = j + offsetY
+        count = dfs(newI, newJ, count, out)
+
+    return count
 
 
-def solve(n, d):
-    # 计算每个节点能访问到的服务点位置
-    # 节点i可以访问到位置j，如果 |i-j| <= d[i]
-    # 注意：题目中节点编号从1开始
-    can_reach = []
-    for i in range(n):
-        node_id = i + 1  # 节点编号从1开始
-        reachable = set()
-        for j in range(1, n + 1):  # 服务点可能的位置
-            if abs(node_id - j) <= d[i]:
-                reachable.add(j)
-        can_reach.append(reachable)
+def solve_method(areas):
+    global checked, m, n, directions
+    m = len(areas)
+    n = len(areas[0])
+    checked = set()
+    directions = [(0, -1), (0, 1), (-1, 0), (1, 0)]
 
-    # 使用贪心算法：每次选择能被最多未覆盖节点访问到的位置
-    covered = set()  # 已经被覆盖的节点
-    service_points = 0
+    candidates = []  # 存储所有单入口区域 (entry_i, entry_j, size)
 
-    while len(covered) < n:
-        best_pos = -1
-        best_coverage = set()
+    for i in range(m):
+        for j in range(n):
+            if areas[i][j] == "O" and (i, j) not in checked:
+                out = []  # 存储边界入口点
+                count = dfs(i, j, 0, out)
 
-        # 找到能被最多未覆盖节点访问到的位置
-        for pos in range(1, n + 1):  # 服务点可能的位置
-            if pos not in covered:  # 如果这个位置还没有被覆盖
-                # 计算有多少未覆盖的节点可以访问到这个位置
-                can_access = set()
-                for i in range(n):
-                    if (i + 1) not in covered and pos in can_reach[i]:
-                        can_access.add(i + 1)
+                # 只有恰好一个入口的区域才考虑
+                if len(out) == 1:
+                    entry_i, entry_j = out[0]
+                    candidates.append((entry_i, entry_j, count))
 
-                if len(can_access) > len(best_coverage):
-                    best_coverage = can_access
-                    best_pos = pos
+    # 处理结果
+    if not candidates:
+        return "NULL"
+    elif len(candidates) == 1:
+        return candidates[0]  # 返回 (i, j, count)
+    else:
+        # 找到最大的区域
+        max_size = max(candidate[2] for candidate in candidates)
+        # 找出所有最大大小的区域
+        max_candidates = [c for c in candidates if c[2] == max_size]
 
-        if best_pos == -1 or len(best_coverage) == 0:
-            break
-
-        # 选择这个位置作为服务点
-        service_points += 1
-        covered.update(best_coverage)
-
-    return service_points
+        if len(max_candidates) == 1:
+            return max_candidates[0]  # 返回最大的单入口区域
+        else:
+            # 如果有多个相同大小的最大区域，返回大小值
+            return max_size
 
 
-# 测试第一个例子
-n = 7
-d = [4, 0, 0, 1, 3, 1, 3]
-result = solve(n, d)
-print(f"n={n}, d={d}")
-print(f"结果: {result}")
-print(f"期望: 3")
-print(f"正确: {'✓' if result == 3 else '✗'}")
+if __name__ == '__main__':
+    # 测试用例1：单入口区域
+    areas = [["X", "X", "X", "X"],
+             ["X", "O", "O", "X"],
+             ["X", "O", "O", "X"],
+             ["X", "O", "X", "X"]]
+    result = solve_method(areas)
+    print(f"测试1: {result}")  # 应该是 (3, 1, 5)
+    assert result == (3, 1, 5)
 
-# 打印每个节点能访问到的位置
-print("\n每个节点能访问到的位置:")
-for i in range(n):
-    node_id = i + 1
-    reachable = []
-    for j in range(1, n + 1):
-        if abs(node_id - j) <= d[i]:
-            reachable.append(j)
-    print(f"节点{node_id}: {reachable}")
+    # 测试用例2：单入口小区域
+    areas = [["X", "X", "X", "X", "X"],
+             ["O", "O", "O", "O", "X"],
+             ["X", "O", "O", "O", "X"],
+             ["X", "O", "X", "X", "O"]]
+    result = solve_method(areas)
+    print(f"测试2: {result}")  # 应该是 (3, 4, 1)
+    assert result == (3, 4, 1)
+
+    # 测试用例3：无单入口区域
+    areas = [["X", "X", "X", "X"],
+             ["X", "O", "O", "O"],
+             ["X", "O", "O", "O"],
+             ["X", "O", "O", "X"],
+             ["X", "X", "X", "X"]]
+    result = solve_method(areas)
+    print(f"测试3: {result}")  # 应该是 "NULL"
+    assert result == "NULL"
+
+    # 测试用例4：多个单入口区域
+    areas = [["X", "X", "X", "X"],
+             ["X", "O", "O", "O"],
+             ["X", "X", "X", "X"],
+             ["X", "O", "O", "O"],
+             ["X", "X", "X", "X"]]
+    result = solve_method(areas)
+    print(f"测试4: {result}")  # 应该是 3 (两个区域大小都是3)
+    assert result == 3

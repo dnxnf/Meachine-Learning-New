@@ -2203,6 +2203,17 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/Leetcodes/leetcode/editor/cn/[518]零钱兑换 II.py">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/Leetcodes/leetcode/editor/cn/doc/content/[518]零钱兑换 II.md" />
+              <option name="frontendQuestionId" value="leetcode.cn518" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/Leetcodes/leetcode/editor/cn/[518]零钱兑换 II.py" />
+              <option name="titleSlug" value="coin-change-ii" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/Leetcodes/leetcode/editor/cn/[521]最长特殊序列 Ⅰ.py">
           <value>
             <LeetcodeEditor>
@@ -3146,6 +3157,17 @@
               <option name="host" value="leetcode.cn" />
               <option name="path" value="$PROJECT_DIR$/Leetcodes/leetcode/editor/cn/[LCP 28]采购方案.py" />
               <option name="titleSlug" value="4xy4Wx" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/Leetcodes/leetcode/editor/cn/[LCP 30]魔塔游戏.py">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/Leetcodes/leetcode/editor/cn/doc/content/[LCP 30]魔塔游戏.md" />
+              <option name="frontendQuestionId" value="leetcode.cnLCP 30" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/Leetcodes/leetcode/editor/cn/[LCP 30]魔塔游戏.py" />
+              <option name="titleSlug" value="p0NxJO" />
             </LeetcodeEditor>
           </value>
         </entry>

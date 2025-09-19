@@ -53,7 +53,7 @@ class Solution:
                     dp[i] = min(dp[i], dp[i - coin] + 1)
         return dp[amount] if dp[amount] != float('inf') else -1
 
-    def coinChange(self, coins: List[int], amount: int) -> int:
+    def coinChange2(self, coins: List[int], amount: int) -> int:
         # 当成逐层扩展，知道找到目标金额，因为把已经有的金额加到了visited，又是逐层的，所有是找到最小的数量
         # 使用队列来进行BFS，队列中的元素是（当前金额，硬币数）
         q = deque([(0, 0)])
@@ -76,7 +76,16 @@ class Solution:
         # 如果队列为空仍未找到解，返回-1
         return -1
 
-
+    def coinChange(self, coins: List[int], amount: int) -> int:
+        # dp 完全背包，每个物品都能拿任意次，所以dp[i]表示凑够i元钱需要的最少硬币数
+        dp = [float('inf')] * (amount + 1)
+        dp[0] = 0
+        # 先初始化dp[0]，因为0元钱可以凑成0个硬币
+        for i in range(1, amount + 1):
+            for coin in coins: # 这里就无需倒序，因为这是完全背包，所以顺序无所谓
+                if i >= coin:
+                    dp[i] = min(dp[i], dp[i - coin] + 1)
+        return dp[amount] if dp[amount] != float('inf') else -1
 # leetcode submit region end(Prohibit modification and deletion)
 
 if __name__ == "__main__":
