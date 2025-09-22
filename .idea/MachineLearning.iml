@@ -9,8 +9,12 @@
       <excludeFolder url="file://$MODULE_DIR$/venv" />
       <excludeFolder url="file://$MODULE_DIR$/someProject/imageAndModel" />
       <excludeFolder url="file://$MODULE_DIR$/someProject/其他资料" />
+      <excludeFolder url="file://$MODULE_DIR$/.vscode" />
+      <excludeFolder url="file://$MODULE_DIR$/SomeExaminationQuestions" />
+      <excludeFolder url="file://$MODULE_DIR$/其他东西" />
     </content>
     <content url="file://$MODULE_DIR$/SomeExaminationQuestions/华为choice100" />
+    <content url="file://$MODULE_DIR$/SomeExaminationQuestions/华为choice200" />
     <orderEntry type="jdk" jdkName="Python 3.9 (MachineLearning)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
