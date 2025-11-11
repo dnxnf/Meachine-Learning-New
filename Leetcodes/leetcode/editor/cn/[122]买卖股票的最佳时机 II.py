@@ -43,6 +43,7 @@
 
 from typing import List, Optional
 
+# 记录今天比昨天高的总利润
 
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
@@ -104,15 +105,26 @@ class Solution:
         return cash_hold
 
     def maxProfit(self, prices: List[int]) -> int:
+        """
+
+        Args:
+            prices (List[int]): 股票价格列表，其中prices[i]表示第i天的股票价格
+
+        Returns:
+            int: 能够获得的最大利润
+        """
         if not prices:
             return 0
 
         max_profit = 0
+        # 遍历价格数组，累加所有上涨趋势的收益
+        # 只要今天价格比昨天高，就将差值计入总利润
         for i in range(1, len(prices)):
             if prices[i] > prices[i - 1]:
                 max_profit += prices[i] - prices[i - 1]
 
         return max_profit
+
 
 # leetcode submit region end(Prohibit modification and deletion)
 
